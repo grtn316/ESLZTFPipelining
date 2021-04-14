@@ -9,7 +9,6 @@
 # }
 
 variable "location" {
-  required = true
 }
 
 variable "tags" {
@@ -67,7 +66,6 @@ variable "admin_username" {
 }
 
 variable "admin_password" {
-  required = true
 }
 
 variable "storage_account_type" {
