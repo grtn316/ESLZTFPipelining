@@ -50,12 +50,6 @@ resource "azurerm_kubernetes_cluster" "private" {
 
 }
 
-resource "azurerm_role_assignment" "aks" {
-  principal_id         = azurerm_kubernetes_cluster.private.identity[0].principal_id
-  role_definition_name = "Network Contributor"
-  scope                = var.subnet_id # Subnet ID
-}
-
 output "client_certificate" {
   value = azurerm_kubernetes_cluster.private.kube_config.0.client_certificate
 }
