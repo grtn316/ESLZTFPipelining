@@ -45,7 +45,7 @@ resource "azurerm_kubernetes_cluster" "private" {
   #   admin_password = "P@ssw0rd12345!!"
   # }
 
-  private_cluster_enabled = true
+  # private_cluster_enabled = true
 
 }
 
