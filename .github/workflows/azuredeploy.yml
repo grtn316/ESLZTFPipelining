@@ -1,27 +1,5 @@
 name: Deploy To Azure
-on:
-  workflow_dispatch:
-    inputs:
-      prefix:
-          description: 'Resource Group prefix'
-          required: true
-          default: 'sasviya'
-      location:
-          description: 'Deployment region'
-          required: true
-          default: 'eastus'
-      public_cidr:
-          description: 'Public IP range to whitelist for access to cluser. Ex: "76.31.125.243/32","76.31.125.222/32" '
-          required: true
-          default: '"76.31.125.243/32"'
-      tags:
-          description: 'e.g., { "key1" = "value1", "key2" = "value2" }'
-          required: false
-          default: '{}'
-      create_aks_azure_monitor :
-          description: 'Enable Azure Monitor for AKS instance'
-          required: false
-          default: 'false'
+on: workflow_dispatch
 jobs:
   deploy-to-azure:
     name: 'Deploy to Azure'
