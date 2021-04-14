@@ -19,7 +19,7 @@ resource "random_integer" "deployment" {
 
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${random_integer.deployment.result}-rg"
+  name     = "rg-${random_integer.deployment.result}"
   location = data.terraform_remote_state.existing-infra.outputs.rg_location
 }
 
