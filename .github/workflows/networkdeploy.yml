@@ -32,7 +32,7 @@ jobs:
 
       - name: 'LS'
         working-directory: ./NetworkDeployment
-        run: ls ../
+        run: ls ~
 
       - name: 'Terraform Init'
         id: init
