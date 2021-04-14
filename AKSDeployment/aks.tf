@@ -18,7 +18,7 @@ resource "random_integer" "deployment" {
 }
 
 module "private_aks" {
-  source = "../TFmodules//aks-private"
+  source = "../TFmodules/aks-private"
 
   resource_group_name = data.terraform_remote_state.existing-infra.outputs.rg_name
   location            = data.terraform_remote_state.existing-infra.outputs.rg_location
