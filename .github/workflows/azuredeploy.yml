@@ -1,0 +1,52 @@
+name: Deploy To Azure
+on:
+  workflow_dispatch:
+    inputs:
+      prefix:
+          description: 'Resource Group prefix'
+          required: true
+          default: 'sasviya'
+      location:
+          description: 'Deployment region'
+          required: true
+          default: 'eastus'
+      public_cidr:
+          description: 'Public IP range to whitelist for access to cluser. Ex: "76.31.125.243/32","76.31.125.222/32" '
+          required: true
+          default: '"76.31.125.243/32"'
+      tags:
+          description: 'e.g., { "key1" = "value1", "key2" = "value2" }'
+          required: false
+          default: '{}'
+      create_aks_azure_monitor :
+          description: 'Enable Azure Monitor for AKS instance'
+          required: false
+          default: 'false'
+jobs:
+  deploy-to-azure:
+    name: 'Deploy to Azure'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    runs-on: ubuntu-18.04
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@main
+
+      - name: 'Set Terraform'
+        uses: hashicorp/setup-terraform@v1.2.1
+        with:
+          terraform_version: 0.14.8
+          terraform_wrapper: false
+
+      - name: 'Terraform Init'
+        id: init
+        working-directory: ./DefaultDeployment
+        run: terraform init
+
+      - name: 'Terraform Apply'
+        id: apply
+        working-directory: ./DefaultDeployment
+        run: terraform apply -input=false -auto-approve
