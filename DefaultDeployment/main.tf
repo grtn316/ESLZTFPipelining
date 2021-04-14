@@ -15,7 +15,7 @@ module "enterprise_scale" {
   #Input Variables: https://registry.terraform.io/modules/Azure/caf-enterprise-scale/azurerm/latest?tab=inputs
 
   root_parent_id = var.root_parent_id == null ? data.azurerm_client_config.current.tenant_id : var.root_parent_id #REQUIRED: The root_parent_id is used to specify where to set the root for all Landing Zone deployments. Usually the Tenant ID when deploying the core Enterprise-scale Landing Zones.
-  #root_id        = var.root_id   #OPTIONAL: If specified, will set a custom Name (ID) value for the Enterprise-scale "root" Management Group, and append this to the ID for all core Enterprise-scale Management Groups.
+  root_id        = var.root_id   #OPTIONAL: If specified, will set a custom Name (ID) value for the Enterprise-scale "root" Management Group, and append this to the ID for all core Enterprise-scale Management Groups.
   root_name      = var.root_name #OPTIONAL: If specified, will set a custom DisplayName value for the Enterprise-scale "root" Management Group.
 
   archetype_config_overrides = var.archetype_config_overrides == null ? {} : var.archetype_config_overrides                               # OPTIONAL: If specified, will set custom Archetype configurations to the default Enterprise-scale Management Groups.

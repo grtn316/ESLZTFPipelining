@@ -1,5 +1,11 @@
 name: Deploy To Azure
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      root_id:
+          description: 'Set a custom Name (ID) value for the Enterprise-scale "root" Management Group'
+          required: false
+          default: 'es'
 jobs:
   deploy-to-azure:
     name: 'Deploy to Azure'
@@ -8,6 +14,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      TF_VAR_root_id: ${{ github.event.inputs.root_id }}
     runs-on: ubuntu-18.04
     steps:
       - name: 'Checkout'
