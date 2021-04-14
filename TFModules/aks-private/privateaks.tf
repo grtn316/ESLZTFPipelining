@@ -28,7 +28,8 @@ resource "azurerm_kubernetes_cluster" "private" {
 
 
   identity {
-    type = "SystemAssigned"
+    type = "UserAssigned"
+    user_assigned_identity_id = "/subscriptions/0fd3a867-7211-409f-9678-9b812ed9aa47/resourcegroups/64729-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aksnetcontrib"
   }
 
   # linux_profile {
