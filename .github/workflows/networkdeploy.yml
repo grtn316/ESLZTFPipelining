@@ -31,7 +31,6 @@ jobs:
           terraform_wrapper: false
 
       - name: 'LS'
-        id: apply
         working-directory: ./NetworkDeployment
         run: ls ../
 
