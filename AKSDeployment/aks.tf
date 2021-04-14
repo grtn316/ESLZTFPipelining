@@ -20,7 +20,7 @@ resource "random_integer" "deployment" {
 module "private_aks" {
   source = "../TFModules//aks-private"
 
-  resource_group_name = data.terraform_remote_state.existing-infra.outputs.rg_name
+  resource_group_name = "rg-${random_integer.deployment.result}"
   location            = data.terraform_remote_state.existing-infra.outputs.rg_location
   prefix              = "aks-${random_integer.deployment.result}"
   subnet_id = data.terraform_remote_state.existing-infra.outputs.aks_subnet_id
