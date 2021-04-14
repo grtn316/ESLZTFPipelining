@@ -7,7 +7,7 @@ resource "random_id" "vm-sa" {
       tmp = var.compute_hostname_prefix
   }
 
-  byte_length = 8
+  byte_length = 16
 }
 
 resource "azurerm_storage_account" "vm-sa" {
