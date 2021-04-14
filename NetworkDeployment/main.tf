@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "rg" {
 
 # Virtual Network
 module "create_vnet" {
-  source = "~/work/ESLZTFPipelining/ESLZTFPipelining/TFmodules/networking/vnet"
+  source = "./TFmodules/networking/vnet"
 
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
@@ -25,7 +25,7 @@ module "create_vnet" {
 }
 
 module "aks_subnet" {
-  source = "~/work/ESLZTFPipelining/ESLZTFPipelining/TFmodules/networking/subnet"
+  source = "./TFmodules/networking/subnet"
 
   subnet_name = "aks_subnet"
   subnet_prefix = "192.168.2.0/24"
@@ -52,7 +52,7 @@ output "aks_subnet_id" {
 # Deploy a Windows Server VM
 
 module "create_windowsserver" {
-  source = "~/work/ESLZTFPipelining/ESLZTFPipelining/TFmodules/compute"
+  source = "./TFmodules/compute"
 
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
