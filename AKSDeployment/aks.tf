@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "rg" {
 module "private_aks" {
   source = "../TFModules//aks-private"
 
-  resource_group_name = "${random_integer.deployment.result}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   location            = data.terraform_remote_state.existing-infra.outputs.rg_location
   prefix              = "aks-${random_integer.deployment.result}"
   subnet_id = data.terraform_remote_state.existing-infra.outputs.aks_subnet_id
