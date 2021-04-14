@@ -10,6 +10,10 @@ on:
           description: 'Connectivity Deployment Region'
           required: true
           default: 'eastus'
+      vm_admin_username:
+          description: 'Windows VM Admin Account Name'
+          required: true
+          default: 'sysadmin'
 jobs:
   deploy-to-azure:
     name: 'Deploy to Azure'
@@ -19,6 +23,7 @@ jobs:
       ARM_SUBSCRIPTION_ID: ${{ github.event.inputs.subscription_id }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       TF_VAR_location: ${{ github.event.inputs.location }}
+      TF_VAR_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
     runs-on: ubuntu-18.04
     steps:
       - name: 'Checkout'
