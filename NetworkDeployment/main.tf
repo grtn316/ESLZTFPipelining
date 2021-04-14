@@ -17,24 +17,24 @@ module "create_vnet" {
   location            = var.location
   vnet_name           = "vnet-${random_integer.deployment.result}"
 
-  address_space = "192.168.0.0/16"
-  default_subnet_prefix = "192.168.1.0/24"
+  address_space = "10.0.0.0/16"
+  default_subnet_prefix = "10.0.0.0/24"
   dns_servers = null
   region_zones = 1
  
 }
 
-module "aks_subnet" {
-  source = "../TFModules/networking//subnet"
+# module "aks_subnet" {
+#   source = "../TFModules/networking//subnet"
 
-  subnet_name = "aks_subnet"
-  subnet_prefix = "192.168.2.0/24"
-  virtual_network_name = module.create_vnet.vnet_name
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  enforce_private_link_endpoint_network_policies = true
+#   subnet_name = "aks_subnet"
+#   subnet_prefix = "192.168.2.0/24"
+#   virtual_network_name = module.create_vnet.vnet_name
+#   resource_group_name = azurerm_resource_group.rg.name
+#   location            = azurerm_resource_group.rg.location
+#   enforce_private_link_endpoint_network_policies = true
 
-}
+# }
 
 output "rg_location" {
   value = var.location
@@ -46,6 +46,14 @@ output "rg_name" {
 
 output "aks_subnet_id" {
     value = module.aks_subnet.subnet_id
+}
+
+output "connectivity_vnet_name" {
+    value = module.create_vnet.name
+}
+
+output "connectivity_vnet_id" {
+    value = module.create_vnet.id
 }
 
 
