@@ -1,4 +1,4 @@
-name: Deploy To Azure
+name: Platform Deploy To Azure
 on:
   workflow_dispatch:
     inputs:
