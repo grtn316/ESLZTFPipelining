@@ -1,5 +1,11 @@
 name: AKS Deploy To Azure
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      subscription_id:
+          description: 'Connectivity Subscription Id'
+          required: true
+          default: ''
 jobs:
   deploy-to-azure:
     name: 'AKS Deploy to Azure'
@@ -16,7 +22,7 @@ jobs:
       - name: 'Set Terraform'
         uses: hashicorp/setup-terraform@v1.2.1
         with:
-          terraform_version: 0.14.10
+          terraform_version: 0.14.8
           terraform_wrapper: true
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
