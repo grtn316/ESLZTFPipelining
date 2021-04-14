@@ -23,13 +23,40 @@ resource "azurerm_resource_group" "rg" {
   location = data.terraform_remote_state.existing-infra.outputs.rg_location
 }
 
+# Virtual Network
+module "create_vnet" {
+  source = "../TFModules/networking//vnet"
+
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  vnet_name           = "vnet-${random_integer.deployment.result}"
+
+  address_space = "10.1.0.0/16"
+  default_subnet_prefix = "10.1.0.0/20"
+  dns_servers = null
+  region_zones = 1
+
+}
+
+# module "peeringX" {
+#   source = "../../TFmodules/networking/peering"
+
+#   resource_group_nameA = azurerm_resource_group.resourcegroup.name
+#   resource_group_nameB = data.terraform_remote_state.existing-infra.outputs.rg_name
+#   netA_name            = module.vnet1.vnet_name
+#   netA_id              = module.vnet1.vnet_id
+#   netB_name            = module.vnet2.vnet_name
+#   netB_id              = module.vnet2.vnet_id
+
+# }
+
 module "private_aks" {
   source = "../TFModules//aks-private"
 
   resource_group_name = azurerm_resource_group.rg.name
   location            = data.terraform_remote_state.existing-infra.outputs.rg_location
   prefix              = "aks-${random_integer.deployment.result}"
-  subnet_id = data.terraform_remote_state.existing-infra.outputs.aks_subnet_id
+  subnet_id = module.create_vnet.default_subnet_id
 
 
 }
