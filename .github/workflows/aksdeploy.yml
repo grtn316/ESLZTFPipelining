@@ -1,5 +1,11 @@
 name: AKS Deploy To Azure
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      subscription_id:
+          description: 'Connectivity Subscription Id'
+          required: true
+          default: ''
 jobs:
   deploy-to-azure:
     name: 'AKS Deploy to Azure'
