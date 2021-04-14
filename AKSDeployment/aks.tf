@@ -17,6 +17,12 @@ resource "random_integer" "deployment" {
   max = 99999
 }
 
+
+resource "azurerm_resource_group" "rg" {
+  name     = "${random_integer.deployment.result}-rg"
+  location = var.location
+}
+
 module "private_aks" {
   source = "../TFmodules/aks-private"
 
