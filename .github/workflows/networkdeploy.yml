@@ -30,6 +30,11 @@ jobs:
           terraform_version: 0.14.8
           terraform_wrapper: false
 
+      - name: 'LS'
+        id: apply
+        working-directory: ./NetworkDeployment
+        run: ls ../
+
       - name: 'Terraform Init'
         id: init
         working-directory: ./NetworkDeployment
