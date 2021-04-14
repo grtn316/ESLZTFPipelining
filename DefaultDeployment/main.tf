@@ -28,7 +28,7 @@ module "enterprise_scale" {
     azurerm_role_definition       = "60s"
   } : var.create_duration_delay
 
-  custom_landing_zones      = var.custom_landing_zones == null ? false : var.custom_landing_zones           # OPTIONAL: If specified, will deploy additional Management Groups alongside Enterprise-scale core Management Groups.
+  custom_landing_zones      = var.custom_landing_zones == null ? false : var.custom_landing_zones           #OPTIONAL: If specified, will deploy additional Management Groups alongside Enterprise-scale core Management Groups.
   default_location          = var.default_location == null ? "eastus" : var.default_location                #OPTIONAL: If specified, will use set the default location used for resource deployments where needed.
   deploy_core_landing_zones = var.deploy_core_landing_zones == null ? true : var.deploy_core_landing_zones  #OPTIONAL: If set to true, will include the core Enterprise-scale Management Group hierarchy.
   deploy_demo_landing_zones = var.deploy_demo_landing_zones == null ? false : var.deploy_demo_landing_zones #OPTIONAL: If set to true, will include the demo "Landing Zone" Management Groups.
