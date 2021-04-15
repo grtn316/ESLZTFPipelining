@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       subscription_id:
-          description: 'Connectivity Subscription Id'
+          description: 'Landing Zone Subscription Id'
           required: true
           default: ''
 jobs:
