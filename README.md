@@ -104,6 +104,19 @@ Please proceed with pipeline deployments:
 1. [Platform Deploy](./.github/workflows/azuredeploy.yml)
     - Optional Variables
       - Management group prefix (defaults to "es")
+      - Map Subscriptions to Management Groups
+        ```
+            {
+                root           = [],
+                decommissioned = [],
+                sandboxes      = [],
+                landing-zones  = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                platform       = [],
+                connectivity   = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                management     = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                identity       = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
+            }
+        ```
 2. [Network Deploy](./.github/workflows/networkdeploy.yml)
     - Required Variables
       - Connectivity Subscription ID

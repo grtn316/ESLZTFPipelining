@@ -72,13 +72,13 @@ variable "library_path" { #OPTIONAL: If specified, sets the path to a custom lib
 variable "subscription_id_overrides" { #OPTIONAL: If specified, will be used to assign subscription_ids to the default Enterprise-scale Management Groups.
   type = map(list(string))
   default = {
-    root           = []
-    decommissioned = []
-    sandboxes      = []
-    landing-zones  = []
-    platform       = []
-    connectivity   = []
-    management     = []
+    root           = [],
+    decommissioned = [],
+    sandboxes      = [],
+    landing-zones  = [],
+    platform       = [],
+    connectivity   = [],
+    management     = [],
     identity       = []
   }
 }
