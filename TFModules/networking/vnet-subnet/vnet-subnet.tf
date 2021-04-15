@@ -72,13 +72,14 @@ output "vnet_location" {
 }
 
 output "default_subnet_id" {
-  value = azurerm_virtual_network.vnet.subnet.id
+  value = azurerm_virtual_network.vnet.subnet.*.id
 
 }
 
 output "default_subnet_name" {
   #value = "azurerm_subnet.vnet.name"
-  value = azurerm_virtual_network.vnet.subnet.name
+  #value = azurerm_virtual_network.vnet.subnet.name
+  value = "default"
 }
 
 output "defaultsub_nsg_name" {
