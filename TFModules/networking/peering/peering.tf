@@ -23,6 +23,6 @@ resource "azurerm_virtual_network_peering" "direction2" {
   allow_forwarded_traffic      = false
   allow_gateway_transit        = false
   use_remote_gateways          = false
-  provider = "connectivity"
+  provider = "azurerm.connectivity"
 
 }
