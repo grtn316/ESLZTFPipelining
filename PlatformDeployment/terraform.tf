@@ -8,6 +8,14 @@ terraform {
       version = ">= 2.46.1"
     }
   }
+
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "jcroth"
+    workspaces {
+      name = "platform"
+    }
+  }
 }
 
 provider "azurerm" {

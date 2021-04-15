@@ -42,9 +42,9 @@ module "peering" {
   source = "../TFModules/networking//peering"
 
   resource_group_nameA = azurerm_resource_group.rg.name
-  resource_group_nameB = data.terraform_remote_state.existing-infra.outputs.rg_name
   netA_name            = module.create_vnet.vnet_name  
   netA_id              = module.create_vnet.vnet_id
+  resource_group_nameB = data.terraform_remote_state.existing-infra.outputs.rg_name
   netB_name            = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_name
   netB_id              = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_id
 
@@ -54,12 +54,14 @@ module "peering2" {
   source = "../TFModules/networking//peering"
   providers = {azurerm = azurerm.connectivity}
 
-  resource_group_nameB = azurerm_resource_group.rg.name
+  
   resource_group_nameA = data.terraform_remote_state.existing-infra.outputs.rg_name
-  netB_name            = module.create_vnet.vnet_name  
-  netB_id              = module.create_vnet.vnet_id
   netA_name            = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_name
   netA_id              = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_id
+  resource_group_nameB = azurerm_resource_group.rg.name
+  netB_name            = module.create_vnet.vnet_name  
+  netB_id              = module.create_vnet.vnet_id
+
 
 }
 
