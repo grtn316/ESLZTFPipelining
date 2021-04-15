@@ -50,6 +50,19 @@ module "peering" {
 
 }
 
+module "peering2" {
+  source = "../TFModules/networking//peering"
+  provider = azurerm.connectivity
+
+  resource_group_nameB = azurerm_resource_group.rg.name
+  resource_group_nameA = data.terraform_remote_state.existing-infra.outputs.rg_name
+  netB_name            = module.create_vnet.vnet_name  
+  netB_id              = module.create_vnet.vnet_id
+  netA_name            = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_name
+  netA_id              = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_id
+
+}
+
 module "private_aks" {
   source = "../TFModules//aks-private"
 
