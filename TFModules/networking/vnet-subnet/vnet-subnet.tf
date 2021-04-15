@@ -3,7 +3,7 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  tags = var.tags
+  # tags = var.tags
 }
 
 
@@ -72,7 +72,7 @@ output "vnet_location" {
 }
 
 output "default_subnet_id" {
-  value = azurerm_subnet.vnet.id
+  value = azurerm_virtual_network.vnet.subnet.id
 
 }
 
