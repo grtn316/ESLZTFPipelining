@@ -41,10 +41,10 @@ module "create_vnet" {
 module "peering" {
   source = "../TFModules/networking//peering"
 
-  resource_group_nameA = azurerm_resource_group.resourcegroup.name
+  resource_group_nameA = azurerm_resource_group.rg.name
   resource_group_nameB = data.terraform_remote_state.existing-infra.outputs.rg_name
-  netA_name            = module.create_vnet.name  
-  netA_id              = module.create_vnet.id
+  netA_name            = module.create_vnet.vnet_name  
+  netA_id              = module.create_vnet.vnet_id
   netB_name            = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_name
   netB_id              = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_id
 
