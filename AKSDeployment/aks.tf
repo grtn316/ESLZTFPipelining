@@ -52,7 +52,7 @@ module "peering" {
 
 module "peering2" {
   source = "../TFModules/networking//peering"
-  provider = azurerm.connectivity
+  providers = {azurerm = azurerm.connectivity}
 
   resource_group_nameB = azurerm_resource_group.rg.name
   resource_group_nameA = data.terraform_remote_state.existing-infra.outputs.rg_name
