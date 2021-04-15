@@ -6,6 +6,10 @@ on:
           description: 'Set a custom Name (ID) value for the Enterprise-scale "root" Management Group'
           required: false
           default: 'es'
+      subscription_id_overrides:
+          description: 'Map Subscriptions to Management Groups'
+          required: false
+          default: '{}'
 jobs:
   deploy-to-azure:
     name: 'Deploy to Azure'
@@ -15,6 +19,7 @@ jobs:
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       TF_VAR_root_id: ${{ github.event.inputs.root_id }}
+      TF_VAR_subscription_id_overrides: ${{ github.event.inputs.subscription_id_overrides }}
     runs-on: ubuntu-18.04
     steps:
       - name: 'Checkout'
@@ -28,10 +33,10 @@ jobs:
 
       - name: 'Terraform Init'
         id: init
-        working-directory: ./DefaultDeployment
+        working-directory: ./PlatformDeployment
         run: terraform init
 
       - name: 'Terraform Apply'
         id: apply
-        working-directory: ./DefaultDeployment
+        working-directory: ./PlatformDeployment
         run: terraform apply -input=false -auto-approve

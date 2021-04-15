@@ -12,7 +12,7 @@ variable "root_id" { #OPTIONAL: If specified, will set a custom Name (ID) value 
 
 variable "root_name" { #OPTIONAL: If specified, will set a custom DisplayName value for the Enterprise-scale "root" Management Group.
   type    = string
-  default = "Tenant Root Group"
+  default = "ESLZ Root"
 }
 
 variable "archetype_config_overrides" { # OPTIONAL: If specified, will set custom Archetype configurations to the default Enterprise-scale Management Groups.
@@ -21,19 +21,19 @@ variable "archetype_config_overrides" { # OPTIONAL: If specified, will set custo
 }
 
 variable "create_duration_delay" { #OPTIONAL: Used to tune terraform apply when faced with errors caused by API caching or eventual consistency. Sets a custom delay period after creation of the specified resource type.
-  type    = map(string)
+  type = map(string)
   default = {
-                azurerm_management_group      = "30s"
-                azurerm_policy_assignment     = "30s"
-                azurerm_policy_definition     = "30s"
-                azurerm_policy_set_definition = "30s"
-                azurerm_role_assignment       = "0s"
-                azurerm_role_definition       = "60s"
-            }
+    azurerm_management_group      = "30s"
+    azurerm_policy_assignment     = "30s"
+    azurerm_policy_definition     = "30s"
+    azurerm_policy_set_definition = "30s"
+    azurerm_role_assignment       = "0s"
+    azurerm_role_definition       = "60s"
+  }
 }
 
 variable "custom_landing_zones" { #OPTIONAL: If specified, will deploy additional Management Groups alongside Enterprise-scale core Management Groups.
-  type    = map( object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string), archetype_config = object({ archetype_id = string, parameters = any, access_control = any }) }) )
+  type    = map(object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string), archetype_config = object({ archetype_id = string, parameters = any, access_control = any }) }))
   default = {}
 }
 
@@ -53,15 +53,15 @@ variable "deploy_demo_landing_zones" { #OPTIONAL: If set to true, will include t
 }
 
 variable "destroy_duration_delay" { #OPTIONAL: Used to tune terraform deploy when faced with errors caused by API caching or eventual consistency. Sets a custom delay period after destruction of the specified resource type.
-  type    = map(string)
+  type = map(string)
   default = {
-                azurerm_management_group      = "0s"
-                azurerm_policy_assignment     = "0s"
-                azurerm_policy_definition     = "0s"
-                azurerm_policy_set_definition = "0s"
-                azurerm_role_assignment       = "0s"
-                azurerm_role_definition       = "0s"
-            }
+    azurerm_management_group      = "0s"
+    azurerm_policy_assignment     = "0s"
+    azurerm_policy_definition     = "0s"
+    azurerm_policy_set_definition = "0s"
+    azurerm_role_assignment       = "0s"
+    azurerm_role_definition       = "0s"
+  }
 }
 
 variable "library_path" { #OPTIONAL: If specified, sets the path to a custom library folder for archetype artefacts.
@@ -70,8 +70,17 @@ variable "library_path" { #OPTIONAL: If specified, sets the path to a custom lib
 }
 
 variable "subscription_id_overrides" { #OPTIONAL: If specified, will be used to assign subscription_ids to the default Enterprise-scale Management Groups.
-  type    = map(list(string))
-  default = {}
+  type = map(list(string))
+  default = {
+    root           = []
+    decommissioned = []
+    sandboxes      = []
+    landing-zones  = []
+    platform       = []
+    connectivity   = []
+    management     = []
+    identity       = []
+  }
 }
 
 variable "template_file_variables" { #OPTIONAL: If specified, provides the ability to define custom template variables used when reading in template files from the built-in and custom library_path.
