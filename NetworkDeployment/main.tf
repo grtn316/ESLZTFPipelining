@@ -44,16 +44,16 @@ output "rg_name" {
   value = azurerm_resource_group.rg.name
 }
 
-output "aks_subnet_id" {
-    value = module.aks_subnet.subnet_id
-}
+# output "aks_subnet_id" {
+#     value = module.aks_subnet.subnet_id
+# }
 
 output "connectivity_vnet_name" {
-    value = module.create_vnet.name
+    value = module.create_vnet.vnet_name
 }
 
 output "connectivity_vnet_id" {
-    value = module.create_vnet.id
+    value = module.create_vnet.vnet_id
 }
 
 
