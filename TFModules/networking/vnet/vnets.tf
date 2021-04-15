@@ -22,7 +22,7 @@ resource "azurerm_subnet" "vnet" {
   virtual_network_name = var.vnet_name
   address_prefixes     = [var.default_subnet_prefix]
 
-  depends_on = [azurerm_virtual_network.vnet, azurerm_network_security_group.nsg]
+  depends_on = [azurerm_virtual_network.vnet]
 }
 
 resource "azurerm_network_security_group" "nsg" {
