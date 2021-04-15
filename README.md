@@ -101,7 +101,7 @@ You will need to create 6 secrets in your repo (Settings >  Secrets):
 - **VM_ADMIN_PASSWORD** - Any complex password for provisoning of your VM.
 
 Please proceed with pipeline deployments:
-1. [Platform Deploy](./.github/workflows/azuredeploy.yml)
+1. [Platform Deploy](./.github/workflows/platformdeploy.yml)
     - Optional Variables
       - Management group prefix (defaults to "es")
       - Map Subscriptions to Management Groups
