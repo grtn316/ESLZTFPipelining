@@ -10,6 +10,10 @@ variable "netB_id" {
     
 }
 
+variable "netA_id" {
+    
+}
+
 variable "resource_group_nameA" {
     
 }
