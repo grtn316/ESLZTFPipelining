@@ -43,8 +43,8 @@ module "peering" {
 
   resource_group_nameA = azurerm_resource_group.resourcegroup.name
   resource_group_nameB = data.terraform_remote_state.existing-infra.outputs.rg_name
-  netA_name            = module.vnet1.vnet_name  
-  netA_id              = module.vnet1.vnet_id
+  netA_name            = module.create_vnet.name  
+  netA_id              = module.create_vnet.id
   netB_name            = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_name
   netB_id              = data.terraform_remote_state.existing-infra.outputs.connectivity_vnet_id
 
