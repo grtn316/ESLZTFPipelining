@@ -13,7 +13,7 @@ resource "azurerm_kubernetes_cluster" "private" {
     min_count = 1
     max_count = 3    
     type = "VirtualMachineScaleSets"
-    vnet_subnet_id = var.subnet_id
+    vnet_subnet_id = "${var.subnet_id}"
   }
 
   network_profile {
