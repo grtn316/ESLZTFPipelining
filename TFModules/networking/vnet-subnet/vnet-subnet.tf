@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "nsg" {
-  name            = "${var.vnet_name}-${azurerm_subnet.vnet.name}-nsg" 
+  name            = "${var.vnet_name}-default-nsg" 
   resource_group_name = var.resource_group_name
   location            = var.location
 
@@ -77,7 +77,8 @@ output "default_subnet_id" {
 }
 
 output "default_subnet_name" {
-  value = azurerm_subnet.vnet.name
+  #value = "azurerm_subnet.vnet.name"
+  value = azurerm_virtual_network.vnet.subnet.name
 }
 
 output "defaultsub_nsg_name" {
