@@ -22,3 +22,10 @@ provider "azurerm" {
   # tenant_id       = var.tenant_id
   features {}
 }
+
+provider "azurerm" {
+  alias = "connectivity"
+  subscription_id = "0fd3a867-7211-409f-9678-9b812ed9aa47"
+  # tenant_id       = var.tenant_id
+  features {}
+}
