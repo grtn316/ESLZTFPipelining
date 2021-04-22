@@ -42,4 +42,4 @@ jobs:
       - name: 'Terraform Apply'
         id: apply
         working-directory: ./PlatformDeployment
-        run: terraform apply -input=false -auto-approve -refresh=true
+        run: terraform apply -input=false -auto-approve
