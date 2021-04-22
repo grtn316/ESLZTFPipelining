@@ -1,8 +1,5 @@
 name: Subscription Deploy To Azure
-on:
-  workflow_dispatch:
-    inputs:
-
+on: workflow_dispatch
 jobs:
   deploy-to-azure:
     name: 'AKS Deploy to Azure'
@@ -12,6 +9,8 @@ jobs:
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
     runs-on: ubuntu-18.04
+    environment:
+      name: Dev-SubscriptionCreation
     steps:
       - name: 'Checkout'
         uses: actions/checkout@main
