@@ -25,6 +25,8 @@ jobs:
       TF_VAR_location: ${{ github.event.inputs.location }}
       TF_VAR_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
     runs-on: ubuntu-18.04
+    environment:
+        name: Dev-Network
     steps:
       - name: 'Checkout'
         uses: actions/checkout@main
