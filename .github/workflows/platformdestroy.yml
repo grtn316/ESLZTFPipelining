@@ -28,6 +28,6 @@ jobs:
         run: terraform init
 
       - name: 'Terraform Destroy'
-        id: apply
+        id: destroy
         working-directory: ./PlatformDeployment
-        run: terraform destory -auto-approve
+        run: terraform destroy -auto-approve
