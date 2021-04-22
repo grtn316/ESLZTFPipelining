@@ -37,12 +37,7 @@ jobs:
         working-directory: ./PlatformDeployment
         run: terraform init
 
-      - name: 'Terraform Refresh'
-        id: init
-        working-directory: ./PlatformDeployment
-        run: terraform refresh -parallelism=256
-
       - name: 'Terraform Apply'
         id: apply
         working-directory: ./PlatformDeployment
-        run: terraform apply -input=false -auto-approve
+        run: terraform apply -input=false -auto-approve -refresh=true
