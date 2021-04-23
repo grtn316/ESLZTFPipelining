@@ -1,6 +1,6 @@
 # Data From Existing Infrastructure
 
-data "terraform_remote_state" "existing-infra" {
+data "terraform_remote_state" "existing-lz" {
   backend = "remote"
 
   config = {
@@ -20,7 +20,7 @@ resource "random_integer" "deployment" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "${random_integer.deployment.result}-rg"
-  location = data.terraform_remote_state.existing-infra.outputs.rg_location
+  location = data.terraform_remote_state.existing-lz.outputs.rg_location
 }
 
 
@@ -28,9 +28,9 @@ module "private_aks" {
   source = "../TFModules//aks-private"
 
   resource_group_name = azurerm_resource_group.rg.name
-  location            = data.terraform_remote_state.existing-infra.outputs.rg_location
+  location            = data.terraform_remote_state.existing-lz.outputs.rg_location
   prefix              = "aks-${random_integer.deployment.result}"
-  subnet_id = data.terraform_remote_state.existing-infra.outputs.lz_default_subnet_id
+  subnet_id = data.terraform_remote_state.existing-.outputs.lz_default_subnet_id
 
 
 }
