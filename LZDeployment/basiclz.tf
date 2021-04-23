@@ -67,7 +67,7 @@ module "peering2" {
 
 
 output "rg_location" {
-  value = var.location
+  value = azurerm_resource_group.rg.location
 }
 
 output "rg_name" {
