@@ -60,7 +60,7 @@ module "test_root_id_3" {
   deploy_core_landing_zones = false
 
   custom_landing_zones = {
-    "Main" = {
+    "main" = {
       display_name               = "Main"
       parent_management_group_id = "${var.root_id_3}"
       subscription_ids           = []
@@ -70,7 +70,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "USA" = {
+    "usa" = {
       display_name               = "USA"
       parent_management_group_id = "Main"
       subscription_ids           = []
@@ -80,7 +80,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "UK" = {
+    "uk" = {
       display_name               = "UK"
       parent_management_group_id = "Main"
       subscription_ids           = []
@@ -90,7 +90,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "Decommissioned" = {
+    "decommissioned" = {
       display_name               = "Decommissioned"
       parent_management_group_id = "USA"
       subscription_ids           = []
@@ -100,7 +100,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "Sandbox" = {
+    "sandbox" = {
       display_name               = "Sandbox"
       parent_management_group_id = "USA"
       subscription_ids           = []
@@ -110,7 +110,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "Core" = {
+    "core" = {
       display_name               = "Core"
       parent_management_group_id = "USA"
       subscription_ids           = []
@@ -120,7 +120,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "Security" = {
+    "security" = {
       display_name               = "Security"
       parent_management_group_id = "Core"
       subscription_ids           = []
@@ -130,7 +130,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "IAM" = {
+    "iam" = {
       display_name               = "IAM"
       parent_management_group_id = "Core"
       subscription_ids           = []
@@ -140,7 +140,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "Networking" = {
+    "networking" = {
       display_name               = "Networking"
       parent_management_group_id = "Core"
       subscription_ids           = []
@@ -150,7 +150,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "PROD" = {
+    "prod" = {
       display_name               = "PROD"
       parent_management_group_id = "USA"
       subscription_ids           = []
@@ -160,7 +160,7 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "NonPROD" = {
+    "nonprod" = {
       display_name               = "NonPROD"
       parent_management_group_id = "USA"
       subscription_ids           = []
