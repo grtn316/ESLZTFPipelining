@@ -1,4 +1,4 @@
-name: Network Deploy To Azure - Connectivity
+name: Network Deploy To Azure
 on:
   workflow_dispatch:
     inputs:
