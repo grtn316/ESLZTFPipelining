@@ -49,7 +49,7 @@ variable "default_location" { #OPTIONAL: If specified, will use set the default 
 
 variable "deploy_core_landing_zones" { #OPTIONAL: If set to true, will include the core Enterprise-scale Management Group hierarchy.
   type    = bool
-  default = false
+  default = true
 }
 
 variable "deploy_demo_landing_zones" { #OPTIONAL: If set to true, will include the demo "Landing Zone" Management Groups.
