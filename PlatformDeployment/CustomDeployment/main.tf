@@ -175,6 +175,7 @@ module "test_root_id_3" {
     }
   }
 
+
   # archetype_config_overrides = {
   #   root = {
   #     archetype_id = "customer_root"
@@ -210,6 +211,20 @@ module "test_root_id_3" {
 
 
 }
+
+module "test_root" {
+  source  = "Azure/caf-enterprise-scale/azurerm"
+  version = "0.1.2"
+
+  root_parent_id = data.azurerm_client_config.current.tenant_id
+  root_id        = "customes"
+  root_name      = "Custom Test"
+  
+  deploy_core_landing_zones = false
+  deploy_demo_landing_zones = false
+
+}
+
 
 # module "test_root_id_3_lz1" {
 #   source  = "Azure/caf-enterprise-scale/azurerm"
