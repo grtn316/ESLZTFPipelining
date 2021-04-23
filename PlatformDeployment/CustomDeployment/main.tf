@@ -60,10 +60,8 @@ module "test_root_id_3" {
   deploy_core_landing_zones = false
   deploy_demo_landing_zones = false
 
-
-
-  custom_landing_zones = {
-    "main" = {
+custom_landing_zones = {
+    "${var.root_id_3}-main" = {
       display_name               = "Main"
       parent_management_group_id = "${var.root_id_3}"
       subscription_ids           = []
@@ -73,144 +71,157 @@ module "test_root_id_3" {
         access_control = {}
       }
     }
-    "usa" = {
-      display_name               = "USA"
-      parent_management_group_id = "Main"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "uk" = {
-      display_name               = "UK"
-      parent_management_group_id = "Main"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "decommissioned" = {
-      display_name               = "Decommissioned"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "sandbox" = {
-      display_name               = "Sandbox"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "core" = {
-      display_name               = "Core"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "security" = {
-      display_name               = "Security"
-      parent_management_group_id = "Core"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "iam" = {
-      display_name               = "IAM"
-      parent_management_group_id = "Core"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "networking" = {
-      display_name               = "Networking"
-      parent_management_group_id = "Core"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "prod" = {
-      display_name               = "PROD"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "nonprod" = {
-      display_name               = "NonPROD"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-  }
-
-
-  # archetype_config_overrides = {
-  #   root = {
-  #     archetype_id = "customer_root"
-  #     parameters = {
-  #       Deploy-SQL-Auditing = {
-  #         retentionDays                = jsonencode("10")
-  #         storageAccountsResourceGroup = jsonencode("")
-  #       }
-  #       Deploy-HITRUST-HIPAA = {
-  #         CertificateThumbprints                                        = jsonencode("")
-  #         DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
-  #         DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
-  #         installedApplicationsOnWindowsVM                              = jsonencode("")
-  #       }
-  #     }
-  #     access_control = {}
-  #   }
-  # }
-
-  # subscription_id_overrides = {
-  #   root           = []
-  #   decommissioned = []
-  #   sandboxes      = []
-  #   landing-zones  = []
-  #   platform       = []
-  #   connectivity   = []
-  #   management     = []
-  #   identity       = []
-  #   demo-corp      = []
-  #   demo-online    = []
-  #   demo-sap       = []
-  # }
-
-
 }
+
+#   custom_landing_zones = {
+#     "main" = {
+#       display_name               = "Main"
+#       parent_management_group_id = "${var.root_id_3}"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "usa" = {
+#       display_name               = "USA"
+#       parent_management_group_id = "Main"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "uk" = {
+#       display_name               = "UK"
+#       parent_management_group_id = "Main"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "decommissioned" = {
+#       display_name               = "Decommissioned"
+#       parent_management_group_id = "USA"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "sandbox" = {
+#       display_name               = "Sandbox"
+#       parent_management_group_id = "USA"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "core" = {
+#       display_name               = "Core"
+#       parent_management_group_id = "USA"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "security" = {
+#       display_name               = "Security"
+#       parent_management_group_id = "Core"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "iam" = {
+#       display_name               = "IAM"
+#       parent_management_group_id = "Core"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "networking" = {
+#       display_name               = "Networking"
+#       parent_management_group_id = "Core"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "prod" = {
+#       display_name               = "PROD"
+#       parent_management_group_id = "USA"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#     "nonprod" = {
+#       display_name               = "NonPROD"
+#       parent_management_group_id = "USA"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id   = "default_empty"
+#         parameters     = {}
+#         access_control = {}
+#       }
+#     }
+#   }
+
+
+#   # archetype_config_overrides = {
+#   #   root = {
+#   #     archetype_id = "customer_root"
+#   #     parameters = {
+#   #       Deploy-SQL-Auditing = {
+#   #         retentionDays                = jsonencode("10")
+#   #         storageAccountsResourceGroup = jsonencode("")
+#   #       }
+#   #       Deploy-HITRUST-HIPAA = {
+#   #         CertificateThumbprints                                        = jsonencode("")
+#   #         DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
+#   #         DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
+#   #         installedApplicationsOnWindowsVM                              = jsonencode("")
+#   #       }
+#   #     }
+#   #     access_control = {}
+#   #   }
+#   # }
+
+#   # subscription_id_overrides = {
+#   #   root           = []
+#   #   decommissioned = []
+#   #   sandboxes      = []
+#   #   landing-zones  = []
+#   #   platform       = []
+#   #   connectivity   = []
+#   #   management     = []
+#   #   identity       = []
+#   #   demo-corp      = []
+#   #   demo-online    = []
+#   #   demo-sap       = []
+#   # }
+
+
+ }
 
 module "test_root" {
   source  = "Azure/caf-enterprise-scale/azurerm"
