@@ -11,14 +11,14 @@ resource "azurerm_resource_group" "rg" {
 
 # Virtual Network
 module "create_vnet" {
-  source = "../TFModules/networking//vnet"
+  source = "../../TFModules/networking//vnet"
 
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   vnet_name           = "vnet-${random_integer.deployment.result}"
 
-  address_space = "10.0.0.0/16"
-  default_subnet_prefix = "10.0.0.0/24"
+  address_space = "10.111.0.0/23"
+  default_subnet_prefix = "10.111.0.0/27"
   dns_servers = null
   region_zones = 1
  
@@ -49,7 +49,7 @@ output "connectivity_vnet_id" {
 # Deploy a Windows Server VM
 
 module "create_windowsserver" {
-  source = "../TFModules//compute"
+  source = "../../TFModules//compute"
 
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name

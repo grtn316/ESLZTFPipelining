@@ -1,4 +1,4 @@
-name: Network Deploy To Azure
+name: Network Deploy To Azure - Connectivity
 on:
   workflow_dispatch:
     inputs:
@@ -40,10 +40,10 @@ jobs:
 
       - name: 'Terraform Init'
         id: init
-        working-directory: ./NetworkDeployment
+        working-directory: ./NetworkDeployment/Connectivity
         run: terraform init
 
       - name: 'Terraform Apply'
         id: apply
-        working-directory: ./NetworkDeployment
+        working-directory: ./NetworkDeployment/Connectivity
         run: terraform apply -input=false -auto-approve

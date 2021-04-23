@@ -18,9 +18,19 @@ terraform {
 #   }
 }
 
+# provider "azurerm" {
+# #  subscription_id = var.subscription_id
+# #  tenant_id       = var.tenant_id
+#   features {}
+# }
+
 provider "azurerm" {
-#  subscription_id = var.subscription_id
-#  tenant_id       = var.tenant_id
+  subscription_id = "297561b8-e4ce-47cd-90a4-76be4812f825"  
+  tenant_id       = "3fc1081d-6105-4e19-b60c-1ec1252cf560"
+  # tenant_id = "2f4a9838-26b7-47ee-be60-ccc1fdec5953"
+  client_id       = "3b01c46a-1736-49a3-bf83-228c8614fc37"
+  client_secret   = "4Wz55P12_OG54ZzLTcdEwNbPk9liz2vzev"
+ # auxiliary_tenant_ids = ["2f4a9838-26b7-47ee-be60-ccc1fdec5953"]
   features {}
 }
 
