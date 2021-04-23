@@ -17,8 +17,8 @@ resource "azurerm_kubernetes_cluster" "private" {
   }
 
   network_profile {
-    network_plugin = "azure"
-    network_policy = "azure"
+    network_plugin = "kubenet"
+    network_policy = "calico"
     load_balancer_sku = "standard"
     service_cidr       = "10.200.0.0/16"
     dns_service_ip     = "10.200.0.10"
