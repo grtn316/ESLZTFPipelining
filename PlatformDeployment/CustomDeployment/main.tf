@@ -48,19 +48,18 @@ module "enterprise_scale" {
   template_file_variables   = var.template_file_variables == null ? {} : var.template_file_variables     #OPTIONAL: If specified, provides the ability to define custom template variables used when reading in template files from the built-in and custom library_path.
 }
 
-module "test_root_id" {
-  source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "0.1.2"
+module "test_root_id_3" {
+  source = "../../"
 
   root_parent_id = data.azurerm_client_config.current.tenant_id
-  root_id        = var.root_id
-  root_name      = var.root_name
+  root_id        = var.root_id_3
+  root_name      = "${var.root_name}-3"
   library_path   = "${path.root}/lib"
 
   custom_landing_zones = {
-    "${var.root_id}-customer-corp" = {
+    "${var.root_id_3}-customer-corp" = {
       display_name               = "Corp Custom"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      parent_management_group_id = "${var.root_id_3}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -68,9 +67,9 @@ module "test_root_id" {
         access_control = {}
       }
     }
-    "${var.root_id}-customer-sap" = {
+    "${var.root_id_3}-customer-sap" = {
       display_name               = "SAP"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      parent_management_group_id = "${var.root_id_3}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -78,9 +77,9 @@ module "test_root_id" {
         access_control = {}
       }
     }
-    "${var.root_id}-customer-online" = {
+    "${var.root_id_3}-customer-online" = {
       display_name               = "Online"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      parent_management_group_id = "${var.root_id_3}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id = "customer_online"
@@ -105,9 +104,9 @@ module "test_root_id" {
         access_control = {}
       }
     }
-    "${var.root_id}-customer-web-prod" = {
+    "${var.root_id_3}-customer-web-prod" = {
       display_name               = "Prod Web Applications"
-      parent_management_group_id = "${var.root_id}-customer-online"
+      parent_management_group_id = "${var.root_id_3}-customer-online"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -115,9 +114,9 @@ module "test_root_id" {
         access_control = {}
       }
     }
-    "${var.root_id}-customer-web-test" = {
+    "${var.root_id_3}-customer-web-test" = {
       display_name               = "Test Web Applications"
-      parent_management_group_id = "${var.root_id}-customer-online"
+      parent_management_group_id = "${var.root_id_3}-customer-online"
       subscription_ids           = []
       archetype_config = {
         archetype_id = "customer_online"
@@ -138,9 +137,9 @@ module "test_root_id" {
         access_control = {}
       }
     }
-    "${var.root_id}-customer-web-dev" = {
+    "${var.root_id_3}-customer-web-dev" = {
       display_name               = "Dev Web Applications"
-      parent_management_group_id = "${var.root_id}-customer-online"
+      parent_management_group_id = "${var.root_id_3}-customer-online"
       subscription_ids           = []
       archetype_config = {
         archetype_id = "customer_online"
@@ -173,7 +172,7 @@ module "test_root_id" {
         Deploy-HITRUST-HIPAA = {
           CertificateThumbprints                                        = jsonencode("")
           DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
-          DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id)
+          DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
           installedApplicationsOnWindowsVM                              = jsonencode("")
         }
       }
@@ -197,19 +196,18 @@ module "test_root_id" {
 
 }
 
-module "test_root_id_lz1" {
-  source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "0.1.2"
+module "test_root_id_3_lz1" {
+  source = "../../"
 
-  root_parent_id            = "${var.root_id}-landing-zones"
-  root_id                   = var.root_id
+  root_parent_id            = "${var.root_id_3}-landing-zones"
+  root_id                   = var.root_id_3
   deploy_core_landing_zones = false
   library_path              = "${path.root}/lib"
 
   custom_landing_zones = {
-    "${var.root_id}-scoped-lz1" = {
+    "${var.root_id_3}-scoped-lz1" = {
       display_name               = "Scoped LZ1"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      parent_management_group_id = "${var.root_id_3}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id = "customer_online"
@@ -233,7 +231,7 @@ module "test_root_id_lz1" {
   }
 
   depends_on = [
-    module.test_root_id,
+    module.test_root_id_3,
   ]
 
 }
