@@ -52,12 +52,10 @@ module "test_root_id_3" {
   source  = "Azure/caf-enterprise-scale/azurerm"
   version = "0.1.2"
 
-  root_parent_id = var.root_parent_id == null ? data.azurerm_client_config.current.tenant_id : var.root_parent_id #REQUIRED: The root_parent_id is used to specify where to set the root for all Landing Zone deployments. Usually the Tenant ID when deploying the core Enterprise-scale Landing Zones.
+  root_parent_id = data.azurerm_client_config.current.tenant_id
   root_id        = var.root_id_3
-  root_name      = "${var.root_name} Custom"
+  root_name      = "${var.root_name}-3"
   library_path   = "${path.root}/lib"
-
-  deploy_core_landing_zones = true
 
   custom_landing_zones = {
     "${var.root_id_3}-customer-corp" = {
@@ -197,9 +195,6 @@ module "test_root_id_3" {
     demo-sap       = []
   }
 
-  depends_on = [
-      module.test_root_id_3,
-    ]
 
 }
 
