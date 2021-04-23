@@ -49,7 +49,8 @@ module "enterprise_scale" {
 }
 
 module "test_root_id_3" {
-  source = "../../"
+  source  = "Azure/caf-enterprise-scale/azurerm"
+  version = "0.1.2"
 
   root_parent_id = data.azurerm_client_config.current.tenant_id
   root_id        = var.root_id_3
@@ -197,7 +198,8 @@ module "test_root_id_3" {
 }
 
 module "test_root_id_3_lz1" {
-  source = "../../"
+  source  = "Azure/caf-enterprise-scale/azurerm"
+  version = "0.1.2"
 
   root_parent_id            = "${var.root_id_3}-landing-zones"
   root_id                   = var.root_id_3
