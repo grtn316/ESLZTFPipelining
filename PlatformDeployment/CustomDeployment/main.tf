@@ -86,7 +86,7 @@ module "test_root_id_3" {
     }
     "usa" = {
       display_name               = "USA"
-      parent_management_group_id = "Main"
+      parent_management_group_id = "main"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -96,7 +96,7 @@ module "test_root_id_3" {
     }
     "uk" = {
       display_name               = "UK"
-      parent_management_group_id = "Main"
+      parent_management_group_id = "main"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -106,7 +106,7 @@ module "test_root_id_3" {
     }
     "decommissioned" = {
       display_name               = "Decommissioned"
-      parent_management_group_id = "USA"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -116,7 +116,7 @@ module "test_root_id_3" {
     }
     "sandbox" = {
       display_name               = "Sandbox"
-      parent_management_group_id = "USA"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -126,7 +126,7 @@ module "test_root_id_3" {
     }
     "core" = {
       display_name               = "Core"
-      parent_management_group_id = "USA"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -136,7 +136,7 @@ module "test_root_id_3" {
     }
     "security" = {
       display_name               = "Security"
-      parent_management_group_id = "Core"
+      parent_management_group_id = "core"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -146,7 +146,7 @@ module "test_root_id_3" {
     }
     "iam" = {
       display_name               = "IAM"
-      parent_management_group_id = "Core"
+      parent_management_group_id = "core"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -156,7 +156,7 @@ module "test_root_id_3" {
     }
     "networking" = {
       display_name               = "Networking"
-      parent_management_group_id = "Core"
+      parent_management_group_id = "core"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -166,7 +166,7 @@ module "test_root_id_3" {
     }
     "prod" = {
       display_name               = "PROD"
-      parent_management_group_id = "USA"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
@@ -176,7 +176,7 @@ module "test_root_id_3" {
     }
     "nonprod" = {
       display_name               = "NonPROD"
-      parent_management_group_id = "USA"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "default_empty"
