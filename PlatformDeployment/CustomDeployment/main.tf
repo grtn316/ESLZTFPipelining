@@ -55,7 +55,7 @@ module "test_root_id" {
   root_parent_id = data.azurerm_client_config.current.tenant_id
   root_id        = var.root_id
   root_name      = var.root_name
-  library_path   = var.library_path
+  library_path   = "${path.root}/lib"
 
   custom_landing_zones = {
     "${var.root_id}-customer-corp" = {

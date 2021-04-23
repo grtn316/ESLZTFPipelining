@@ -66,7 +66,7 @@ variable "destroy_duration_delay" { #OPTIONAL: Used to tune terraform deploy whe
 
 variable "library_path" { #OPTIONAL: If specified, sets the path to a custom library folder for archetype artefacts.
   type    = string
-  default = "${path.root}/lib"
+  default = ""
 }
 
 variable "subscription_id_overrides" { #OPTIONAL: If specified, will be used to assign subscription_ids to the default Enterprise-scale Management Groups.
