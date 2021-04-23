@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "rg" {
 
 # Virtual Network
 module "create_vnet" {
-  source = "../TFModules/networking//vnet-subnet"
+  source = "../TFModules/networking//vnet"
 
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
