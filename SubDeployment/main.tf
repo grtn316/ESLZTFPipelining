@@ -26,8 +26,8 @@ provider "azurerm" {
 
 
 data "azurerm_billing_enrollment_account_scope" "example" {
-  billing_account_name    = "david.a.baumgarten@gmail.com"
-  enrollment_account_name = "david.a.baumgarten@gmail.com"
+  billing_account_name    = "8608480"
+  enrollment_account_name = "CSU"
 }
 
 

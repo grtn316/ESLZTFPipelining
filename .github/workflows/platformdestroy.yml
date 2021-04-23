@@ -1,8 +1,8 @@
-name: Subscription Deploy To Azure
+name: Platform TF Destroy
 on: workflow_dispatch
 jobs:
   deploy-to-azure:
-    name: 'AKS Deploy to Azure'
+    name: 'Destroy Platform'
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
@@ -10,7 +10,7 @@ jobs:
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
     runs-on: ubuntu-18.04
     environment:
-      name: Dev-SubscriptionCreation
+        name: Dev-Platform
     steps:
       - name: 'Checkout'
         uses: actions/checkout@main
@@ -19,14 +19,15 @@ jobs:
         uses: hashicorp/setup-terraform@v1.2.1
         with:
           terraform_version: 0.14.8
-          terraform_wrapper: true
+          terraform_wrapper: false
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: 'Terraform Init'
         id: init
-        working-directory: ./SubDeployment
+        working-directory: ./PlatformDeployment
         run: terraform init
 
-      - name: 'Terraform Apply'
-        id: apply
-        working-directory: ./SubDeployment
-        run: terraform apply -input=false -auto-approve
+      - name: 'Terraform Destroy'
+        id: destroy
+        working-directory: ./PlatformDeployment
+        run: terraform destroy -auto-approve
