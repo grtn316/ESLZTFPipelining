@@ -7,6 +7,11 @@ variable "root_parent_id" { #REQUIRED: The root_parent_id is used to specify whe
 
 variable "root_id" { #OPTIONAL: If specified, will set a custom Name (ID) value for the Enterprise-scale "root" Management Group, and append this to the ID for all core Enterprise-scale Management Groups.
   type    = string
+  default = "es"
+}
+
+variable "root_id_3" {
+  type = string
   default = "escustom"
 }
 
