@@ -54,7 +54,7 @@ module "test_root_id_3" {
 
   root_parent_id = data.azurerm_client_config.current.tenant_id
   root_id        = var.root_id_3
-  root_name      = "${var.root_name}-3"
+  root_name      = "${var.root_name} Custom"
   library_path   = "${path.root}/lib"
 
   custom_landing_zones = {
