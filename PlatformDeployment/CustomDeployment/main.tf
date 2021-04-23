@@ -57,6 +57,8 @@ module "test_root_id_3" {
   root_name      = "${var.root_name} Custom"
   library_path   = "${path.root}/lib"
 
+  deploy_core_landing_zones = true
+
   custom_landing_zones = {
     "${var.root_id_3}-customer-corp" = {
       display_name               = "Corp Custom"
