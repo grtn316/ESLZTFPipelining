@@ -40,10 +40,10 @@ jobs:
 
       - name: 'Terraform Init'
         id: init
-        working-directory: ./NetworkDeployment/Connectivity
+        working-directory: ./NetworkDeployment
         run: terraform init
 
       - name: 'Terraform Apply'
         id: apply
-        working-directory: ./NetworkDeployment/Connectivity
+        working-directory: ./NetworkDeployment
         run: terraform apply -input=false -auto-approve
