@@ -12,7 +12,7 @@ terraform {
     hostname = "app.terraform.io"
     organization = "jcroth"
     workspaces {
-      name = "akslab"
+      name = "lza1"
     }
   }
 }

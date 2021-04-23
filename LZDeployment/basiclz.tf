@@ -31,8 +31,8 @@ module "create_vnet" {
   location            = azurerm_resource_group.rg.location
   vnet_name           = "vnet-${random_integer.deployment.result}"
 
-  address_space = "10.1.0.0/16"
-  default_subnet_prefix = "10.1.0.0/20"
+  address_space = "100.111.2.0/23"
+  default_subnet_prefix = "100.111.2.0/27"
   dns_servers = null
   region_zones = 1
 
