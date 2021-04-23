@@ -7,7 +7,7 @@ data "terraform_remote_state" "existing-infra" {
     organization = "jcroth"
 
     workspaces = {
-      name = "netops"
+      name = "lza1"
     }
   }
 }
@@ -30,7 +30,7 @@ module "private_aks" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = data.terraform_remote_state.existing-infra.outputs.rg_location
   prefix              = "aks-${random_integer.deployment.result}"
-  subnet_id = module.create_vnet.default_subnet_id
+  subnet_id = data.terraform_remote_state.existing-infra.outputs.lz_default_subnet_id
 
 
 }
