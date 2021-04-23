@@ -58,119 +58,122 @@ module "test_root_id_3" {
   library_path   = "${path.root}/lib"
 
   deploy_core_landing_zones = false
+  deploy_demo_landing_zones = false
+  
+  custom_landing_zones = {}
 
-  custom_landing_zones = {
-    "main" = {
-      display_name               = "Main"
-      parent_management_group_id = "${var.root_id_3}"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "usa" = {
-      display_name               = "USA"
-      parent_management_group_id = "Main"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "uk" = {
-      display_name               = "UK"
-      parent_management_group_id = "Main"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "decommissioned" = {
-      display_name               = "Decommissioned"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "sandbox" = {
-      display_name               = "Sandbox"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "core" = {
-      display_name               = "Core"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "security" = {
-      display_name               = "Security"
-      parent_management_group_id = "Core"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "iam" = {
-      display_name               = "IAM"
-      parent_management_group_id = "Core"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "networking" = {
-      display_name               = "Networking"
-      parent_management_group_id = "Core"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "prod" = {
-      display_name               = "PROD"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "nonprod" = {
-      display_name               = "NonPROD"
-      parent_management_group_id = "USA"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-  }
+  # custom_landing_zones = {
+  #   "main" = {
+  #     display_name               = "Main"
+  #     parent_management_group_id = "${var.root_id_3}"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "usa" = {
+  #     display_name               = "USA"
+  #     parent_management_group_id = "Main"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "uk" = {
+  #     display_name               = "UK"
+  #     parent_management_group_id = "Main"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "decommissioned" = {
+  #     display_name               = "Decommissioned"
+  #     parent_management_group_id = "USA"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "sandbox" = {
+  #     display_name               = "Sandbox"
+  #     parent_management_group_id = "USA"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "core" = {
+  #     display_name               = "Core"
+  #     parent_management_group_id = "USA"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "security" = {
+  #     display_name               = "Security"
+  #     parent_management_group_id = "Core"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "iam" = {
+  #     display_name               = "IAM"
+  #     parent_management_group_id = "Core"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "networking" = {
+  #     display_name               = "Networking"
+  #     parent_management_group_id = "Core"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "prod" = {
+  #     display_name               = "PROD"
+  #     parent_management_group_id = "USA"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  #   "nonprod" = {
+  #     display_name               = "NonPROD"
+  #     parent_management_group_id = "USA"
+  #     subscription_ids           = []
+  #     archetype_config = {
+  #       archetype_id   = "default_empty"
+  #       parameters     = {}
+  #       access_control = {}
+  #     }
+  #   }
+  # }
 
   # archetype_config_overrides = {
   #   root = {
