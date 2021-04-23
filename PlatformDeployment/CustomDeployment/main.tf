@@ -57,184 +57,194 @@ module "test_root_id_3" {
   root_name      = "${var.root_name} Custom"
   library_path   = "${path.root}/lib"
 
-  custom_landing_zones = {
-    "${var.root_id_3}-customer-corp" = {
-      display_name               = "Corp Custom"
-      parent_management_group_id = "${var.root_id_3}-landing-zones"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id_3}-customer-sap" = {
-      display_name               = "SAP"
-      parent_management_group_id = "${var.root_id_3}-landing-zones"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id_3}-customer-online" = {
-      display_name               = "Online"
-      parent_management_group_id = "${var.root_id_3}-landing-zones"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id = "customer_online"
-        parameters = {
-          Deny-Resource-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "eastus",
-              "westus",
-              "uksouth",
-              "ukwest",
-            ])
-          }
-          Deny-RSG-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "eastus",
-              "westus",
-              "uksouth",
-              "ukwest",
-            ])
-          }
-        }
-        access_control = {}
-      }
-    }
-    "${var.root_id_3}-customer-web-prod" = {
-      display_name               = "Prod Web Applications"
-      parent_management_group_id = "${var.root_id_3}-customer-online"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id_3}-customer-web-test" = {
-      display_name               = "Test Web Applications"
-      parent_management_group_id = "${var.root_id_3}-customer-online"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id = "customer_online"
-        parameters = {
-          Deny-Resource-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "eastus",
-              "westus",
-            ])
-          }
-          Deny-RSG-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "eastus",
-              "westus",
-            ])
-          }
-        }
-        access_control = {}
-      }
-    }
-    "${var.root_id_3}-customer-web-dev" = {
-      display_name               = "Dev Web Applications"
-      parent_management_group_id = "${var.root_id_3}-customer-online"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id = "customer_online"
-        parameters = {
-          Deny-Resource-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "eastus",
-            ])
-          }
-          Deny-RSG-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "eastus",
-            ])
-          }
-        }
-        access_control = {}
-      }
-    }
-
-  }
-
-  archetype_config_overrides = {
-    root = {
-      archetype_id = "customer_root"
-      parameters = {
-        Deploy-SQL-Auditing = {
-          retentionDays                = jsonencode("10")
-          storageAccountsResourceGroup = jsonencode("")
-        }
-        Deploy-HITRUST-HIPAA = {
-          CertificateThumbprints                                        = jsonencode("")
-          DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
-          DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
-          installedApplicationsOnWindowsVM                              = jsonencode("")
-        }
-      }
-      access_control = {}
-    }
-  }
-
-  subscription_id_overrides = {
-    root           = []
-    decommissioned = []
-    sandboxes      = []
-    landing-zones  = []
-    platform       = []
-    connectivity   = []
-    management     = []
-    identity       = []
-    demo-corp      = []
-    demo-online    = []
-    demo-sap       = []
-  }
-
-
-}
-
-module "test_root_id_3_lz1" {
-  source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "0.1.2"
-
-  root_parent_id            = "${var.root_id_3}-landing-zones"
-  root_id                   = var.root_id_3
   deploy_core_landing_zones = false
-  library_path              = "${path.root}/lib"
 
   custom_landing_zones = {
-    "${var.root_id_3}-scoped-lz1" = {
-      display_name               = "Scoped LZ1"
-      parent_management_group_id = "${var.root_id_3}-landing-zones"
+    "Main" = {
+      display_name               = "Main"
+      parent_management_group_id = "${var.root_id_3}"
       subscription_ids           = []
       archetype_config = {
-        archetype_id = "customer_online"
-        parameters = {
-          Deny-Resource-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "northcentralus",
-              "southcentralus",
-            ])
-          }
-          Deny-RSG-Locations = {
-            listOfAllowedLocations = jsonencode([
-              "northcentralus",
-              "southcentralus",
-            ])
-          }
-        }
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "USA" = {
+      display_name               = "USA"
+      parent_management_group_id = "Main"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "UK" = {
+      display_name               = "UK"
+      parent_management_group_id = "Main"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "Decommissioned" = {
+      display_name               = "Decommissioned"
+      parent_management_group_id = "USA"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "Sandbox" = {
+      display_name               = "Sandbox"
+      parent_management_group_id = "USA"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "Core" = {
+      display_name               = "Core"
+      parent_management_group_id = "USA"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "Security" = {
+      display_name               = "Security"
+      parent_management_group_id = "Core"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "IAM" = {
+      display_name               = "IAM"
+      parent_management_group_id = "Core"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "Networking" = {
+      display_name               = "Networking"
+      parent_management_group_id = "Core"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "PROD" = {
+      display_name               = "PROD"
+      parent_management_group_id = "USA"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "NonPROD" = {
+      display_name               = "NonPROD"
+      parent_management_group_id = "USA"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
         access_control = {}
       }
     }
   }
 
-  depends_on = [
-    module.test_root_id_3,
-  ]
+  # archetype_config_overrides = {
+  #   root = {
+  #     archetype_id = "customer_root"
+  #     parameters = {
+  #       Deploy-SQL-Auditing = {
+  #         retentionDays                = jsonencode("10")
+  #         storageAccountsResourceGroup = jsonencode("")
+  #       }
+  #       Deploy-HITRUST-HIPAA = {
+  #         CertificateThumbprints                                        = jsonencode("")
+  #         DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
+  #         DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
+  #         installedApplicationsOnWindowsVM                              = jsonencode("")
+  #       }
+  #     }
+  #     access_control = {}
+  #   }
+  # }
+
+  # subscription_id_overrides = {
+  #   root           = []
+  #   decommissioned = []
+  #   sandboxes      = []
+  #   landing-zones  = []
+  #   platform       = []
+  #   connectivity   = []
+  #   management     = []
+  #   identity       = []
+  #   demo-corp      = []
+  #   demo-online    = []
+  #   demo-sap       = []
+  # }
+
 
 }
+
+# module "test_root_id_3_lz1" {
+#   source  = "Azure/caf-enterprise-scale/azurerm"
+#   version = "0.1.2"
+
+#   root_parent_id            = "${var.root_id_3}-landing-zones"
+#   root_id                   = var.root_id_3
+#   deploy_core_landing_zones = false
+#   library_path              = "${path.root}/lib"
+
+#   custom_landing_zones = {
+#     "${var.root_id_3}-scoped-lz1" = {
+#       display_name               = "Scoped LZ1"
+#       parent_management_group_id = "${var.root_id_3}-landing-zones"
+#       subscription_ids           = []
+#       archetype_config = {
+#         archetype_id = "customer_online"
+#         parameters = {
+#           Deny-Resource-Locations = {
+#             listOfAllowedLocations = jsonencode([
+#               "northcentralus",
+#               "southcentralus",
+#             ])
+#           }
+#           Deny-RSG-Locations = {
+#             listOfAllowedLocations = jsonencode([
+#               "northcentralus",
+#               "southcentralus",
+#             ])
+#           }
+#         }
+#         access_control = {}
+#       }
+#     }
+#   }
+
+#   depends_on = [
+#     module.test_root_id_3,
+#   ]
+
+# }
