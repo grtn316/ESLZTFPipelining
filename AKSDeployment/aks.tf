@@ -18,7 +18,7 @@ resource "random_integer" "deployment" {
 }
 
 
-resource "azurerm_resource_group" "aks" {
+resource "azurerm_resource_group" "rg" {
   name     = "${random_integer.deployment.result}-aks-rg"
   location = data.terraform_remote_state.existing-lz.outputs.rg_location
 }
