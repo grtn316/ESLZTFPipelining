@@ -57,20 +57,20 @@ module "test_root_id_3" {
   root_name      = "${var.root_name} Custom"
   library_path   = "${path.root}/lib"
 
-  deploy_core_landing_zones = false
+  deploy_core_landing_zones = true
   deploy_demo_landing_zones = false
 
-custom_landing_zones = {
-    "${var.root_id_3}-main" = {
-      display_name               = "Main"
-      parent_management_group_id = "${var.root_id_3}"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
-        access_control = {}
+  custom_landing_zones = {
+      "${var.root_id_3}-main" = {
+        display_name               = "Main"
+        parent_management_group_id = "${var.root_id_3}"
+        subscription_ids           = []
+        archetype_config = {
+          archetype_id   = "default_empty"
+          parameters     = {}
+          access_control = {}
+        }
       }
-    }
 }
 
 #   custom_landing_zones = {
