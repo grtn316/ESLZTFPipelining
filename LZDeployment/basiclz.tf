@@ -64,3 +64,24 @@ module "peering2" {
 
 
 }
+
+
+output "rg_location" {
+  value = var.location
+}
+
+output "rg_name" {
+  value = azurerm_resource_group.rg.name
+}
+
+output "lz_vnet_name" {
+    value = module.create_vnet.vnet_name
+}
+
+output "lz_vnet_id" {
+    value = module.create_vnet.vnet_id
+}
+
+output "lz_default_subnet_id" {
+  value = module.create_vnet.default_subnet_id
+}
