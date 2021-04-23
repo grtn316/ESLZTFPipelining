@@ -17,7 +17,7 @@ variable "root_id_3" {
 
 variable "root_name" { #OPTIONAL: If specified, will set a custom DisplayName value for the Enterprise-scale "root" Management Group.
   type    = string
-  default = "ESLZ Root Custom"
+  default = "ESLZ Root"
 }
 
 variable "archetype_config_overrides" { # OPTIONAL: If specified, will set custom Archetype configurations to the default Enterprise-scale Management Groups.
