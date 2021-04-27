@@ -1,13 +1,13 @@
 {
-  "name": "Deploy-Diagnostics-AnalysisService",
+  "name": "Deploy-Diag-AnalysisSvc",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
     "description": "Deploy Diagnostics AnalysisService",
-    "displayName": "Deploy-Diagnostics-AnalysisService",
+    "displayName": "Deploy-Diag-AnalysisSvc",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-AnalysisService",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diag-AnalysisSvc",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",

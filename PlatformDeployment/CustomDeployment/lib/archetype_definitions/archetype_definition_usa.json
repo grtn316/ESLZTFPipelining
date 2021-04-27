@@ -8,12 +8,12 @@
             "Deploy-Diagnostics-AA",
             "Deploy-Diagnostics-ACI",
             "Deploy-Diagnostics-ACR",
-            "Deploy-Diagnostics-ActivityLog",
+            "Deploy-Diagnostics-ActLog",
             "Deploy-Diagnostics-AKS",
-            "Deploy-Diagnostics-AnalysisService",
-            "Deploy-Diagnostics-ApiForFHIR",
-            "Deploy-Diagnostics-APIMgmt",
-            "Deploy-Diagnostics-ApplicationGateway"
+            "Deploy-Diag-AnalysisSvc",
+            "Deploy-Diag-ApiForFHIR",
+            "Deploy-Diag-APIMgmt",
+            "Deploy-Diag-AppGateway"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],

@@ -1,13 +1,13 @@
 {
-  "name": "Deploy-Diagnostics-ApplicationGateway",
+  "name": "Deploy-Diag-AppGateway",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
     "description": "Deploy Diagnostics Application Gateway",
-    "displayName": "Deploy-Diagnostics-ApplicationGateway",
+    "displayName": "Deploy-Diag-AppGateway",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ApplicationGateway",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diag-AppGateway",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",
