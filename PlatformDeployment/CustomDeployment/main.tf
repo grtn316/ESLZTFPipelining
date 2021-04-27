@@ -48,180 +48,180 @@ module "enterprise_scale" {
   template_file_variables   = var.template_file_variables == null ? {} : var.template_file_variables     #OPTIONAL: If specified, provides the ability to define custom template variables used when reading in template files from the built-in and custom library_path.
 }
 
-# module "test_root_id_3" {
-#   source  = "Azure/caf-enterprise-scale/azurerm"
-#   version = "0.1.2"
+module "test_root_id_3" {
+  source  = "Azure/caf-enterprise-scale/azurerm"
+  version = "0.1.2"
 
-#   root_parent_id = data.azurerm_client_config.current.tenant_id
-#   root_id        = var.root_id_3
-#   root_name      = "${var.root_name} Custom"
-#   library_path   = "${path.root}/lib"
+  root_parent_id = data.azurerm_client_config.current.tenant_id
+  root_id        = var.root_id_3
+  root_name      = "${var.root_name} Custom"
+  library_path   = "${path.root}/lib"
 
-#   deploy_core_landing_zones = false
-#   deploy_demo_landing_zones = false
-
-# #   custom_landing_zones = {
-# #       "${var.root_id_3}-main" = {
-# #         display_name               = "Main"
-# #         parent_management_group_id = "${var.root_id_3}"
-# #         subscription_ids           = []
-# #         archetype_config = {
-# #           archetype_id   = "default_empty"
-# #           parameters     = {}
-# #           access_control = {}
-# #         }
-# #       }
-# # }
+  deploy_core_landing_zones = false
+  deploy_demo_landing_zones = false
 
 #   custom_landing_zones = {
-#     "main" = {
-#       display_name               = "Main"
-#       parent_management_group_id = "${data.azurerm_client_config.current.tenant_id}"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "main"
-#         parameters     = {}
-#         access_control = {}
+#       "${var.root_id_3}-main" = {
+#         display_name               = "Main"
+#         parent_management_group_id = "${var.root_id_3}"
+#         subscription_ids           = []
+#         archetype_config = {
+#           archetype_id   = "default_empty"
+#           parameters     = {}
+#           access_control = {}
+#         }
 #       }
-#     }
-#     "usa" = {
-#       display_name               = "USA"
-#       parent_management_group_id = "main"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "usa"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "uk" = {
-#       display_name               = "UK"
-#       parent_management_group_id = "main"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "usa"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "decommissioned" = {
-#       display_name               = "Decommissioned"
-#       parent_management_group_id = "usa"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "default_empty"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "sandbox" = {
-#       display_name               = "Sandbox"
-#       parent_management_group_id = "usa"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "sandbox"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "core" = {
-#       display_name               = "Core"
-#       parent_management_group_id = "usa"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "default_empty"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "security" = {
-#       display_name               = "Security"
-#       parent_management_group_id = "core"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "default_empty"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "iam" = {
-#       display_name               = "IAM"
-#       parent_management_group_id = "core"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "default_empty"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "networking" = {
-#       display_name               = "Networking"
-#       parent_management_group_id = "core"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "networking"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "prod" = {
-#       display_name               = "PROD"
-#       parent_management_group_id = "usa"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "prod"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#     "nonprod" = {
-#       display_name               = "NonPROD"
-#       parent_management_group_id = "usa"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id   = "nonprod"
-#         parameters     = {}
-#         access_control = {}
-#       }
-#     }
-#   }
+# }
+
+  custom_landing_zones = {
+    "main" = {
+      display_name               = "Main"
+      parent_management_group_id = "${data.azurerm_client_config.current.tenant_id}"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "main"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "usa" = {
+      display_name               = "USA"
+      parent_management_group_id = "main"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "usa"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "uk" = {
+      display_name               = "UK"
+      parent_management_group_id = "main"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "usa"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "decommissioned" = {
+      display_name               = "Decommissioned"
+      parent_management_group_id = "usa"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "sandbox" = {
+      display_name               = "Sandbox"
+      parent_management_group_id = "usa"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "sandbox"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "core" = {
+      display_name               = "Core"
+      parent_management_group_id = "usa"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "security" = {
+      display_name               = "Security"
+      parent_management_group_id = "core"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "iam" = {
+      display_name               = "IAM"
+      parent_management_group_id = "core"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "default_empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "networking" = {
+      display_name               = "Networking"
+      parent_management_group_id = "core"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "networking"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "prod" = {
+      display_name               = "PROD"
+      parent_management_group_id = "usa"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "prod"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "nonprod" = {
+      display_name               = "NonPROD"
+      parent_management_group_id = "usa"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "nonprod"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+  }
 
 
-# #   # archetype_config_overrides = {
-# #   #   root = {
-# #   #     archetype_id = "customer_root"
-# #   #     parameters = {
-# #   #       Deploy-SQL-Auditing = {
-# #   #         retentionDays                = jsonencode("10")
-# #   #         storageAccountsResourceGroup = jsonencode("")
-# #   #       }
-# #   #       Deploy-HITRUST-HIPAA = {
-# #   #         CertificateThumbprints                                        = jsonencode("")
-# #   #         DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
-# #   #         DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
-# #   #         installedApplicationsOnWindowsVM                              = jsonencode("")
-# #   #       }
-# #   #     }
-# #   #     access_control = {}
-# #   #   }
-# #   # }
+#   # archetype_config_overrides = {
+#   #   root = {
+#   #     archetype_id = "customer_root"
+#   #     parameters = {
+#   #       Deploy-SQL-Auditing = {
+#   #         retentionDays                = jsonencode("10")
+#   #         storageAccountsResourceGroup = jsonencode("")
+#   #       }
+#   #       Deploy-HITRUST-HIPAA = {
+#   #         CertificateThumbprints                                        = jsonencode("")
+#   #         DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
+#   #         DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
+#   #         installedApplicationsOnWindowsVM                              = jsonencode("")
+#   #       }
+#   #     }
+#   #     access_control = {}
+#   #   }
+#   # }
 
-# #   # subscription_id_overrides = {
-# #   #   root           = []
-# #   #   decommissioned = []
-# #   #   sandboxes      = []
-# #   #   landing-zones  = []
-# #   #   platform       = []
-# #   #   connectivity   = []
-# #   #   management     = []
-# #   #   identity       = []
-# #   #   demo-corp      = []
-# #   #   demo-online    = []
-# #   #   demo-sap       = []
-# #   # }
+#   # subscription_id_overrides = {
+#   #   root           = []
+#   #   decommissioned = []
+#   #   sandboxes      = []
+#   #   landing-zones  = []
+#   #   platform       = []
+#   #   connectivity   = []
+#   #   management     = []
+#   #   identity       = []
+#   #   demo-corp      = []
+#   #   demo-online    = []
+#   #   demo-sap       = []
+#   # }
 
 
-#  }
+ }
 
 # module "test_root" {
 #   source  = "Azure/caf-enterprise-scale/azurerm"
