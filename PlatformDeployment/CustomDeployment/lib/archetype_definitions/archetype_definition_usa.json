@@ -1,7 +1,10 @@
 {
     "usa": {
         "policy_assignments": [
-            "Append-KV-SoftDelete"
+            "Append-KV-SoftDelete",
+            "Deny-Subnet-Without-Nsg",
+            "Deny-Subnet-Without-Udr",
+            "Deploy-ASC-Standard"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],
