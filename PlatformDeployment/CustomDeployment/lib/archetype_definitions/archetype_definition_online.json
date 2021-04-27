@@ -1,7 +1,7 @@
 {
     "online": {
         "policy_assignments": [
-            
+            "Deny-AppGW-Without-WAF"
         ],
         "policy_definitions": [
             
