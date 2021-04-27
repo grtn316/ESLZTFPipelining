@@ -12,7 +12,7 @@ variable "root_id" { #OPTIONAL: If specified, will set a custom Name (ID) value 
 
 variable "root_id_3" {
   type = string
-  default = "escustom"
+  default = "main" #This name needs to match the root id name in the module custom LZ config
 }
 
 variable "root_name" { #OPTIONAL: If specified, will set a custom DisplayName value for the Enterprise-scale "root" Management Group.
