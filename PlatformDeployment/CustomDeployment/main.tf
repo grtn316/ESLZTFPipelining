@@ -166,7 +166,7 @@ module "test_root_id_3" {
     }
     "prod" = {
       display_name               = "PROD"
-      parent_management_group_id = "prod"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "prod"
@@ -176,7 +176,7 @@ module "test_root_id_3" {
     }
     "nonprod" = {
       display_name               = "NonPROD"
-      parent_management_group_id = "nonprod"
+      parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "nonprod"
