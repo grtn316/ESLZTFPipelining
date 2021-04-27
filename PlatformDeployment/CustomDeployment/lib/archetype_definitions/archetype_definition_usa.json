@@ -1,6 +1,7 @@
 {
     "usa": {
         "policy_assignments": [
+            "Append-KV-SoftDelete"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],
