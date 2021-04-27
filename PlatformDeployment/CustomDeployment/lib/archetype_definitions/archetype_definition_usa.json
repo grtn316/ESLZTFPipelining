@@ -21,7 +21,7 @@
             "Deploy-Diag-Databricks",
             "Deploy-Diag-DECluster",
             "Deploy-Diag-DataFactory",
-            "Deploy-Diag-DataLakeStore",
+            "Deploy-Diag-DataLakeStr",
             "Deploy-Diag-DLAnalytics",
             "Deploy-Diag-EvGridSub",
             "Deploy-Diag-EvGridSysTpc",
