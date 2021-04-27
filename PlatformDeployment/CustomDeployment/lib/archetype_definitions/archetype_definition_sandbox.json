@@ -1,6 +1,7 @@
 {
     "sandbox": {
-        "policy_assignments": [
+        "policy_assignments": [],
+        "policy_definitions": [
             "Append-AppService-httpsonly",
             "Append-AppService-latestTLS",
             "Append-Redis-disableNonSslPort",
@@ -34,7 +35,6 @@
             "Deploy-Sql-vulnerabilityAssessments",
             "Deploy-SqlMi-minTLS"
         ],
-        "policy_definitions": [],
         "policy_set_definitions": [],
         "role_definitions": [],
         "archetype_config": {

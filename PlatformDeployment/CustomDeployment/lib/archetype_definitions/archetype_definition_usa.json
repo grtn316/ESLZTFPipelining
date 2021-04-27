@@ -1,6 +1,8 @@
 {
     "usa": {
         "policy_assignments": [
+        ],
+        "policy_definitions": [
             "Append-KV-SoftDelete",
             "Deny-Subnet-Without-Nsg",
             "Deny-Subnet-Without-Udr",
@@ -69,7 +71,6 @@
             "Deploy-Diagnostics-WVDWorkspace",
             "Deploy-Storage-sslEnforcement"
         ],
-        "policy_definitions": [],
         "policy_set_definitions": [],
         "role_definitions": [],
         "archetype_config": {
