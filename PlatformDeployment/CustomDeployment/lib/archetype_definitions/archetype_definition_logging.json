@@ -1,8 +1,7 @@
 {
     "logging": {
         "policy_assignments": [
-            "Deploy-LA-Config",
-            "Deploy-Log-Analytics"
+           
         ],
         "policy_definitions": [
             
