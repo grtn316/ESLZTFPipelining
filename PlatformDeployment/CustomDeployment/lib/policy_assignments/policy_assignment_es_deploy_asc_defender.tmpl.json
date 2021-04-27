@@ -1,10 +1,10 @@
 {
-  "name": "Deploy-ASC-Defender",
+  "name": "Deploy-ASC-Standard",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
-    "description": "Deploy-ASC-Defender.",
-    "displayName": "Deploy-ASC-Defender",
+    "description": "Deploy-ASC-Standard",
+    "displayName": "Deploy-ASC-Standard",
     "notScopes": [],
     "parameters": {},
     "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-Standard",
