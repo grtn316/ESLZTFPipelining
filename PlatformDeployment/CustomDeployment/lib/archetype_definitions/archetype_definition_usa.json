@@ -4,7 +4,16 @@
             "Append-KV-SoftDelete",
             "Deny-Subnet-Without-Nsg",
             "Deny-Subnet-Without-Udr",
-            "Deploy-ASC-Standard"
+            "Deploy-ASC-Standard",
+            "Deploy-Diagnostics-AA",
+            "Deploy-Diagnostics-ACI",
+            "Deploy-Diagnostics-ACR",
+            "Deploy-Diagnostics-ActivityLog",
+            "Deploy-Diagnostics-AKS",
+            "Deploy-Diagnostics-AnalysisService",
+            "Deploy-Diagnostics-ApiForFHIR",
+            "Deploy-Diagnostics-APIMgmt",
+            "Deploy-Diagnostics-ApplicationGateway"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],
