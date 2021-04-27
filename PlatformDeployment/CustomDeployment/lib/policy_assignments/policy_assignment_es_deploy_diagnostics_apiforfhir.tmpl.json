@@ -4,10 +4,10 @@
   "apiVersion": "2019-09-01",
   "properties": {
     "description": "Deploy Diagnostics ApiForFHIR",
-    "displayName": "Deploy-Diag-ApiForFHIR",
+    "displayName": "Deploy-Diagnostics-ApiForFHIR",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diag-ApiForFHIR",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ApiForFHIR",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",

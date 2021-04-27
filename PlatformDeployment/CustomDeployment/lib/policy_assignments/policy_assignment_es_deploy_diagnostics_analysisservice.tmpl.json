@@ -4,10 +4,10 @@
   "apiVersion": "2019-09-01",
   "properties": {
     "description": "Deploy Diagnostics AnalysisService",
-    "displayName": "Deploy-Diag-AnalysisSvc",
+    "displayName": "Deploy-Diagnostics-AnalysisService",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diag-AnalysisSvc",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-AnalysisService",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",

@@ -8,7 +8,7 @@
             "Deploy-Diagnostics-AA",
             "Deploy-Diagnostics-ACI",
             "Deploy-Diagnostics-ACR",
-            "Deploy-Diagnostics-ActLog",
+            "Deploy-AzActivity-Log",
             "Deploy-Diagnostics-AKS",
             "Deploy-Diag-AnalysisSvc",
             "Deploy-Diag-ApiForFHIR",
