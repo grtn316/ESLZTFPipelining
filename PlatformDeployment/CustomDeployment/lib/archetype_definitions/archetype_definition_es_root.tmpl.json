@@ -1,8 +1,6 @@
 {
-    "customer_root": {
+    "es_root": {
         "policy_assignments": [
-            "Deny-Resource-Locations",
-            "Deny-RSG-Locations",
             "Deploy-ASC-Monitoring",
             "Deploy-ASC-Defender",
             "Deploy-AzActivity-Log",
@@ -10,9 +8,7 @@
             "Deploy-Resource-Diag",
             "Deploy-VM-Monitoring",
             "Deploy-VMSS-Monitoring",
-            "Deploy-WS-Arc-Monitoring",
-            "Deploy-SQL-Auditing",
-            "Deploy-HITRUST-HIPAA"
+            "Deploy-WS-Arc-Monitoring"
         ],
         "policy_definitions": [
             "Append-AppService-httpsonly",
@@ -136,7 +132,8 @@
             "Deploy-VNET-HubSpoke",
             "Deploy-vNet",
             "Deploy-vWAN",
-            "Deploy-Windows-DomainJoin"        ],
+            "Deploy-Windows-DomainJoin"
+        ],
         "policy_set_definitions": [
             "Deny-PublicEndpoints",
             "Deploy-Diag-LogAnalytics",
@@ -148,30 +145,7 @@
             "Network-Subnet-Contributor"
         ],
         "archetype_config": {
-            "parameters": {
-                "Deny-Resource-Locations": {
-                    "listOfAllowedLocations": [
-                        "eastus",
-                        "eastus2",
-                        "westus",
-                        "northcentralus",
-                        "southcentralus",
-                        "uksouth",
-                        "ukwest"
-                    ]
-                },
-                "Deny-RSG-Locations": {
-                    "listOfAllowedLocations": [
-                        "eastus",
-                        "eastus2",
-                        "westus",
-                        "northcentralus",
-                        "southcentralus",
-                        "uksouth",
-                        "ukwest"
-                    ]
-                }
-            },
+            "parameters": {},
             "access_control": {}
         }
     }

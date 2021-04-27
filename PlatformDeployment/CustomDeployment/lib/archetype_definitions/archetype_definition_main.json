@@ -135,11 +135,6 @@
             "Deploy-Windows-DomainJoin"
         ],
         "policy_set_definitions": [
-            "Deny-PublicEndpoints",
-            "Deploy-Diag-LogAnalytics",
-            "Deploy-Sql-Security",
-            "Enforce-Encryption-CMK",
-            "Enforce-EncryptTransit"
         ],
         "role_definitions": [
             "Network-Subnet-Contributor"
