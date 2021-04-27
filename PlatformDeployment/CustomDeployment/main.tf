@@ -89,7 +89,7 @@ module "test_root_id_3" {
       parent_management_group_id = "main"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "usa"
         parameters     = {}
         access_control = {}
       }
@@ -99,7 +99,7 @@ module "test_root_id_3" {
       parent_management_group_id = "main"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "usa"
         parameters     = {}
         access_control = {}
       }
@@ -119,7 +119,7 @@ module "test_root_id_3" {
       parent_management_group_id = "usa"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "sandbox"
         parameters     = {}
         access_control = {}
       }
@@ -159,27 +159,27 @@ module "test_root_id_3" {
       parent_management_group_id = "core"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "networking"
         parameters     = {}
         access_control = {}
       }
     }
     "prod" = {
       display_name               = "PROD"
-      parent_management_group_id = "usa"
+      parent_management_group_id = "prod"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "prod"
         parameters     = {}
         access_control = {}
       }
     }
     "nonprod" = {
       display_name               = "NonPROD"
-      parent_management_group_id = "usa"
+      parent_management_group_id = "nonprod"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "nonprod"
         parameters     = {}
         access_control = {}
       }
@@ -223,18 +223,18 @@ module "test_root_id_3" {
 
  }
 
-module "test_root" {
-  source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "0.1.2"
+# module "test_root" {
+#   source  = "Azure/caf-enterprise-scale/azurerm"
+#   version = "0.1.2"
 
-  root_parent_id = data.azurerm_client_config.current.tenant_id
-  root_id        = "customes"
-  root_name      = "Custom Test"
+#   root_parent_id = data.azurerm_client_config.current.tenant_id
+#   root_id        = "customes"
+#   root_name      = "Custom Test"
   
-  deploy_core_landing_zones = false
-  deploy_demo_landing_zones = false
+#   deploy_core_landing_zones = false
+#   deploy_demo_landing_zones = false
 
-}
+# }
 
 
 # module "test_root_id_3_lz1" {
