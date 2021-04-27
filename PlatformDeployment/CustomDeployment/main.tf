@@ -79,7 +79,7 @@ module "test_root_id_3" {
       parent_management_group_id = "${data.azurerm_client_config.current.tenant_id}"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "default_empty"
+        archetype_id   = "main"
         parameters     = {}
         access_control = {}
       }

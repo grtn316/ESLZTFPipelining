@@ -1,7 +1,6 @@
 {
     "networking": {
-        "policy_assignments": [],
-        "policy_definitions": [
+        "policy_assignments": [
             "Deploy-DNSZoneGroup-For-Blob-PrivateEndpoint",
             "Deploy-DNSZoneGroup-For-File-PrivateEndpoint",
             "Deploy-DNSZoneGroup-For-KeyVault-PrivateEndpoint",
@@ -10,6 +9,9 @@
             "Deploy-DNSZoneGroup-For-Table-PrivateEndpoint",
             "Deploy-FirewallPolicy",
             "Deploy-HUB"
+        ],
+        "policy_definitions": [
+            
         ],
         "policy_set_definitions": [],
         "role_definitions": [],
