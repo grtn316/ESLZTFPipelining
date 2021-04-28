@@ -1,5 +1,5 @@
 {
-  "name": "Deploy-DNSZGrp-KeyVault-PE",
+  "name": "Deploy-DNSZGrp-KV-PE",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {

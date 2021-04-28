@@ -3,7 +3,7 @@
         "policy_assignments": [
             "Deploy-DNSZGrp-Blob-PE",
             "Deploy-DNSZGrp-File-PE",
-            "Deploy-DNSZGrp-KeyVault-PE",
+            "Deploy-DNSZGrp-KV-PE",
             "Deploy-DNSZGrp-Queue-PE",
             "Deploy-DNSZGrp-Sql-PE",
             "Deploy-DNSZGrp-Table-PE",
