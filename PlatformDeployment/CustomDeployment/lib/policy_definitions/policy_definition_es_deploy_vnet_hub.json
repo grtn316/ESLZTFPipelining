@@ -107,6 +107,9 @@
                 "rgName": {
                   "value": "[parameters('rgName')]"
                 },
+                "location": {
+                  "value": "[parameters('location')]"
+                },
                 "hubName": {
                   "value": "[parameters('hubName')]"
                 },
