@@ -139,7 +139,8 @@
             "Deploy-Diag-LogAnalytics",
             "Deploy-Sql-Security",
             "Enforce-Encryption-CMK",
-            "Enforce-EncryptTransit"
+            "Enforce-EncryptTransit",
+            "Deploy-ASC-Config"
         ],
         "role_definitions": [
             "Network-Subnet-Contributor"
