@@ -47,7 +47,7 @@ variable "root_id_3_custom_landing_zones" { #OPTIONAL: If specified, will deploy
   default = {
     "main" = {
       display_name               = "CustomerRoot"
-      parent_management_group_id = "${data.azurerm_client_config.current.tenant_id}"
+      parent_management_group_id = "7213b9e5-b295-4a99-a06f-622ed41cec2d"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "main"
