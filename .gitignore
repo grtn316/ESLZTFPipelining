@@ -24,6 +24,7 @@ override.tf.json
 *subscription_id_overrides.tf
 
 *.terraform*
+*mg_structure.json
 # Include override files you do wish to add to version control using negated pattern
 #
 # !example_override.tf
