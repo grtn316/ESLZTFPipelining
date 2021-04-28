@@ -11,7 +11,10 @@
                 "value": "ExampleHub"
             },
             "HUB": {
-                "value": "ExampleHub"
+                "value": {
+                    "name": "vnet-hub",
+                    "addressPrefix": "10.0.0.0/20"
+                }
             },
             "rgName": {
                 "value": "HubVNetRG"
