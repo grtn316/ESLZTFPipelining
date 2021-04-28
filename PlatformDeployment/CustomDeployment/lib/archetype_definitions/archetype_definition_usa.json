@@ -57,7 +57,17 @@
             "Deploy-Diag-SQLMI",
             "Deploy-Diag-StreamAnalyt",
             "Deploy-Diag-TSI",
-            "Deploy-Diag-TrafficMgr"
+            "Deploy-Diag-TrafficMgr",
+            "Deploy-Diag-VNet",
+            "Deploy-Diag-VM",
+            "Deploy-Diag-VMSS",
+            "Deploy-Diag-VNetGW",
+            "Deploy-Diag-WebServerFrm",
+            "Deploy-Diag-Website",
+            "Deploy-Diag-WVDAppGroup",
+            "Deploy-Diag-WVDHostPools",
+            "Deploy-Diag-WVDWorkspace",
+            "Deploy-Storage-sslEnf"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],
