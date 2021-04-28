@@ -11,7 +11,7 @@ variable "root_id" { #OPTIONAL: If specified, will set a custom Name (ID) value 
 }
 
 variable "root_id_3" {
-  type = string
+  type    = string
   default = "main" #This name needs to match the root id name in the module custom LZ config
 }
 
@@ -43,115 +43,115 @@ variable "custom_landing_zones" { #OPTIONAL: If specified, will deploy additiona
 }
 
 variable "root_id_3_custom_landing_zones" { #OPTIONAL: If specified, will deploy additional Management Groups alongside Enterprise-scale core Management Groups.
-  type    = map(object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string), archetype_config = object({ archetype_id = string, parameters = any, access_control = any }) }))
+  type = map(object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string), archetype_config = object({ archetype_id = string, parameters = any, access_control = any }) }))
   default = {
     "main" = {
-      display_name               = "CustomerRoot"
-      parent_management_group_id = "7213b9e5-b295-4a99-a06f-622ed41cec2d"
-      subscription_ids           = []
+      display_name               = "CustomerRoot",
+      parent_management_group_id = "7213b9e5-b295-4a99-a06f-622ed41cec2d",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "main"
-        parameters     = {}
+        archetype_id   = "main",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "usa" = {
-      display_name               = "USA"
-      parent_management_group_id = "main"
-      subscription_ids           = []
+      display_name               = "USA",
+      parent_management_group_id = "main",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "usa"
-        parameters     = {}
+        archetype_id   = "usa",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "uk" = {
-      display_name               = "UK"
-      parent_management_group_id = "main"
-      subscription_ids           = []
+      display_name               = "UK",
+      parent_management_group_id = "main",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "uk"
-        parameters     = {}
+        archetype_id   = "uk",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "decommissioned" = {
-      display_name               = "Decommissioned"
-      parent_management_group_id = "usa"
-      subscription_ids           = []
+      display_name               = "Decommissioned",
+      parent_management_group_id = "usa",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
+        archetype_id   = "default_empty",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "sandbox" = {
-      display_name               = "Sandbox"
-      parent_management_group_id = "usa"
-      subscription_ids           = []
+      display_name               = "Sandbox",
+      parent_management_group_id = "usa",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "sandbox"
-        parameters     = {}
+        archetype_id   = "sandbox",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "core" = {
-      display_name               = "Core"
-      parent_management_group_id = "usa"
-      subscription_ids           = []
+      display_name               = "Core",
+      parent_management_group_id = "usa",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
+        archetype_id   = "default_empty",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "security" = {
-      display_name               = "Security"
-      parent_management_group_id = "core"
-      subscription_ids           = []
+      display_name               = "Security",
+      parent_management_group_id = "core",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
+        archetype_id   = "default_empty",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "iam" = {
-      display_name               = "IAM"
-      parent_management_group_id = "core"
-      subscription_ids           = []
+      display_name               = "IAM",
+      parent_management_group_id = "core",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "default_empty"
-        parameters     = {}
+        archetype_id   = "default_empty",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "networking" = {
-      display_name               = "Networking"
-      parent_management_group_id = "core"
-      subscription_ids           = []
+      display_name               = "Networking",
+      parent_management_group_id = "core",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "networking"
-        parameters     = {}
+        archetype_id   = "networking",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "prod" = {
-      display_name               = "PROD"
-      parent_management_group_id = "usa"
-      subscription_ids           = []
+      display_name               = "PROD",
+      parent_management_group_id = "usa",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "prod"
-        parameters     = {}
+        archetype_id   = "prod",
+        parameters     = {},
         access_control = {}
       }
-    }
+    },
     "nonprod" = {
-      display_name               = "NonPROD"
-      parent_management_group_id = "usa"
-      subscription_ids           = []
+      display_name               = "NonPROD",
+      parent_management_group_id = "usa",
+      subscription_ids           = [],
       archetype_config = {
-        archetype_id   = "nonprod"
-        parameters     = {}
+        archetype_id   = "nonprod",
+        parameters     = {},
         access_control = {}
       }
     }
