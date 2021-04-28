@@ -18,6 +18,9 @@
             },
             "rgName": {
                 "value": "HubVNetRG"
+            },
+            "vNetLocation": {
+                "value": "HubVNetRG"
             }
         },
         "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-HUB",

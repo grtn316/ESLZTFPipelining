@@ -7,8 +7,7 @@
             "Deploy-DNSZGrp-Queue-PE",
             "Deploy-DNSZGrp-Sql-PE",
             "Deploy-DNSZGrp-Table-PE",
-            "Deploy-FirewallPolicy",
-            "Deploy-HUB"
+            "Deploy-FirewallPolicy"
         ],
         "policy_definitions": [
             

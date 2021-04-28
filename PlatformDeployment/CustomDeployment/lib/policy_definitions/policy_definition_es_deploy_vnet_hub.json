@@ -58,6 +58,14 @@
           "description": "Provide name for resource group."
         }
       },
+      "location": {
+        "type": "String",
+        "defaultValue": "eastus",
+        "metadata": {
+          "displayName": "Location",
+          "description": "Provide location for deployment."
+        }
+      },
       "effect": {
         "type": "String",
         "defaultValue": "DeployIfNotExists",
@@ -92,7 +100,7 @@
             "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
           ],
           "deployment": {
-            "location": "northeurope",
+            "location": "[parameters('location')]",
             "properties": {
               "mode": "Incremental",
               "parameters": {
