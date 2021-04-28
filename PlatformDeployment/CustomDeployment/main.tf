@@ -99,7 +99,7 @@ module "test_root_id_3" {
       parent_management_group_id = "main"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "usa"
+        archetype_id   = "uk"
         parameters     = {}
         access_control = {}
       }

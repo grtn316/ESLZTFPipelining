@@ -1,0 +1,27 @@
+{
+    "name": "Deploy-HUB",
+    "type": "Microsoft.Authorization/policyAssignments",
+    "apiVersion": "2019-09-01",
+    "properties": {
+        "description": "Deploy Hub and Spoke VNet.",
+        "displayName": "Deploy-HUB",
+        "notScopes": [],
+        "parameters": {
+            "hubName": {
+                "value": "ExampleHub"
+            },
+            "HUB": {
+                "value": "ExampleHub"
+            },
+            "rgName": {
+                "value": "HubVNetRG"
+            }
+        },
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-HUB",
+        "scope": "${current_scope_resource_id}"
+    },
+    "location": "${default_location}",
+    "identity": {
+        "type": "SystemAssigned"
+    }
+}
