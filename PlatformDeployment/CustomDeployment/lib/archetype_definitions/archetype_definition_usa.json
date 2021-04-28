@@ -49,7 +49,15 @@
             "Deploy-Diag-RecoveryVlt",
             "Deploy-Diag-RedisCache",
             "Deploy-Diag-Relay",
-            "Deploy-Diag-SearchSvc"
+            "Deploy-Diag-SearchSvc",
+            "Deploy-Diag-ServiceBus",
+            "Deploy-Diag-SignalR",
+            "Deploy-Diag-SQLDBs",
+            "Deploy-Diag-SQLElaPools",
+            "Deploy-Diag-SQLMI",
+            "Deploy-Diag-StreamAnalyt",
+            "Deploy-Diag-TSI",
+            "Deploy-Diag-TrafficMgr"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],
