@@ -10,7 +10,7 @@ data "azurerm_client_config" "current" {}
 
 module "enterprise_scale" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "0.1.2"
+  version = "0.2.0"
 
   #Input Variables: https://registry.terraform.io/modules/Azure/caf-enterprise-scale/azurerm/latest?tab=inputs
 
@@ -50,7 +50,7 @@ module "enterprise_scale" {
 
 module "test_root_id_3" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "0.1.2"
+  version = "0.2.0"
 
   root_parent_id = data.azurerm_client_config.current.tenant_id
   root_id        = var.root_id_3
@@ -59,6 +59,9 @@ module "test_root_id_3" {
 
   deploy_core_landing_zones = false
   deploy_demo_landing_zones = false
+  deploy_management_resources = true
+  configure_management_resources = var.configure_management_resources
+  subscription_id_management  = "14e1bfac-695b-4d75-8f40-a3d5dd5ef2aa"
 
 #   custom_landing_zones = {
 #       "${var.root_id_3}-main" = {
