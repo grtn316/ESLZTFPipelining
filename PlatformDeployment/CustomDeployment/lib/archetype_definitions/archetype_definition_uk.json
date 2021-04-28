@@ -4,7 +4,7 @@
             "Append-KV-SoftDelete",
             "Deny-Subnet-Without-Nsg",
             "Deny-Subnet-Without-Udr",
-            "Deploy-ASC-Standard",
+            "Deploy-ASC-Defender",
             "Deploy-Diag-AA",
             "Deploy-Diag-ACI",
             "Deploy-Diag-ACR",
