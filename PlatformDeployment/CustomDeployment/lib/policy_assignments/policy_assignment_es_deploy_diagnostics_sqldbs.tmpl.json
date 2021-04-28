@@ -1,17 +1,17 @@
 {
-  "name": "Deploy-Diag-AA",
+  "name": "Deploy-Diag-SQLDBs",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
-    "description": "Deploy Diagnostics AA",
-    "displayName": "Deploy-Diagnostics-AA",
+    "description": "Deploy Diagnostics for Azure SQL DBs",
+    "displayName": "Deploy-Diagnostics-SQLDBs",
     "notScopes": [],
     "parameters": {
       "logAnalytics": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/${root_scope_id}-mgmt/providers/Microsoft.OperationalInsights/workspaces/${root_scope_id}-la-00000000-0000-0000-0000-000000000000"
       }
     },
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-AA",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-SQLDBs",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",

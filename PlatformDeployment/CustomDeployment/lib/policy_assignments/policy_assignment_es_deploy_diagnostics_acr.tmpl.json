@@ -1,5 +1,5 @@
 {
-  "name": "Deploy-Diagnostics-ACR",
+  "name": "Deploy-Diag-ACR",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
