@@ -1,13 +1,13 @@
 {
-  "name": "Deploy-Sql-AuditSettings",
+  "name": "Deploy-MySQL-sslEnf",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
-    "description": "Deploy SQL Auditing.",
-    "displayName": "Deploy-Sql-AuditingSettings",
+    "description": "Deploy SSL Enforcement for MySQL.",
+    "displayName": "Deploy-MySQL-sslEnforcement",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Sql-AuditingSettings",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-MySQL-sslEnforcement",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",

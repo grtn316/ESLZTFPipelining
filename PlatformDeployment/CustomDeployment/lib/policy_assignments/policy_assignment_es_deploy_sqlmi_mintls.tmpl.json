@@ -1,13 +1,13 @@
 {
-  "name": "Deploy-Sql-AuditSettings",
+  "name": "Deploy-SqlMi-minTLS",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
-    "description": "Deploy SQL Auditing.",
-    "displayName": "Deploy-Sql-AuditingSettings",
+    "description": "Deploy highest level of TLS for SQL MI.",
+    "displayName": "Deploy-SqlMi-minTLS",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Sql-AuditingSettings",
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-SqlMi-minTLS",
     "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",

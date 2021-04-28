@@ -1,0 +1,17 @@
+{
+  "name": "Deny-PE-Aks",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "description": "Deny creation of public endpoint for AKS",
+    "displayName": "Deny-PublicEndpoint-Aks",
+    "notScopes": [],
+    "parameters": {},
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicEndpoint-Aks",
+    "scope": "${current_scope_resource_id}"
+  },
+  "location": "${default_location}",
+  "identity": {
+    "type": "None"
+  }
+}
