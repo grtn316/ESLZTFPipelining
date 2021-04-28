@@ -40,7 +40,16 @@
             "Deploy-Diag-MariaDB",
             "Deploy-Diag-MediaService",
             "Deploy-Diag-MlWorkspace",
-            "Deploy-Diag-MySQL"
+            "Deploy-Diag-MySQL",
+            "Deploy-Diag-NSG",
+            "Deploy-Diag-NIC",
+            "Deploy-Diag-PostgreSQL",
+            "Deploy-Diag-PBIEmbedded",
+            "Deploy-Diag-PublicIP",
+            "Deploy-Diag-RecoveryVlt",
+            "Deploy-Diag-RedisCache",
+            "Deploy-Diag-Relay",
+            "Deploy-Diag-SearchSvc"
         ],
         "policy_definitions": [],
         "policy_set_definitions": [],
