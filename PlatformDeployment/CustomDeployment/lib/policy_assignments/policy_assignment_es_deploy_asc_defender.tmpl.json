@@ -1,28 +1,14 @@
 {
-  "name": "Deploy-ASC-Defender",
+  "name": "Deploy-ASC-Standard",
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2019-09-01",
   "properties": {
-    "description": "Deploy-ASC-Defender.",
-    "displayName": "Deploy-ASC-Defender",
+    "description": "Deploy-ASC-Standard",
+    "displayName": "Deploy-ASC-Standard",
     "notScopes": [],
-    "parameters": {
-      "emailSecurityContact": {
-        "value": "security_contact@replace_me"
-      },
-      "logAnalytics": {
-        "value": "${root_scope_id}-a-00000000-0000-0000-0000-000000000000"
-      },
-      "ascExportResourceGroupName": {
-        "value": "${root_scope_id}-asc-export"
-      },
-      "ascExportResourceGroupLocation": {
-        "value": "${default_location}"
-      }
-    },
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policySetDefinitions/Deploy-ASC-Config",
-    "scope": "${current_scope_resource_id}",
-    "enforcementMode": "Default"
+    "parameters": {},
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-Standard",
+    "scope": "${current_scope_resource_id}"
   },
   "location": "${default_location}",
   "identity": {
