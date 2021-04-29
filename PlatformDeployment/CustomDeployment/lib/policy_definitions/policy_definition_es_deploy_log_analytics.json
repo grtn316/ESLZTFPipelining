@@ -97,7 +97,7 @@
             ]
           },
           "deployment": {
-            "location": "eastus",
+            "location": "[parameters('workspaceRegion')]",
             "properties": {
               "mode": "Incremental",
               "parameters": {
