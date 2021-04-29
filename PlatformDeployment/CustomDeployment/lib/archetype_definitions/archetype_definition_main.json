@@ -147,11 +147,11 @@
         ],
         "policy_set_definitions": [
             "Deny-PublicEndpoints",
+            "Deploy-ASC-Config",
             "Deploy-Diag-LogAnalytics",
             "Deploy-Sql-Security",
             "Enforce-Encryption-CMK",
-            "Enforce-EncryptTransit",
-            "Deploy-ASC-Config"
+            "Enforce-EncryptTransit"
         ],
         "role_definitions": [
             "Network-Subnet-Contributor"
