@@ -72,7 +72,7 @@ variable "configure_management_resources" {
   default = {
     settings = {
       log_analytics = {
-        enabled = true
+        enabled = false
         config = {
           retention_in_days                           = 30
           enable_monitoring_for_arc                   = true
