@@ -106,7 +106,7 @@ variable "configure_management_resources" {
         }
       }
     }
-    location = "eastus"
+    location = null
     tags     = null
     advanced = null
   }
