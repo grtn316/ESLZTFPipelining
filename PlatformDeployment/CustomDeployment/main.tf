@@ -60,7 +60,7 @@ module "test_root_id_3" {
   deploy_core_landing_zones = false
   deploy_demo_landing_zones = false
   deploy_management_resources = true
-  configure_management_resources = var.configure_management_resources
+  #configure_management_resources = var.configure_management_resources
   subscription_id_management  = "14e1bfac-695b-4d75-8f40-a3d5dd5ef2aa"
 
 #   custom_landing_zones = {
