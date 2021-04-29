@@ -97,7 +97,7 @@
             ]
           },
           "deployment": {
-            "location": "northeurope",
+            "location": "eastus",
             "properties": {
               "mode": "Incremental",
               "parameters": {
