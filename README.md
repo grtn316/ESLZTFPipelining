@@ -282,11 +282,11 @@ Please proceed with pipeline deployments:
 
 
 2. [Network Deploy](./.github/workflows/networkdeploy.yml)
-    - Required Variables
+    - Required Variables:
       - Connectivity Subscription ID - This is the subscription ID where you plan to deploy the centralized networking components (Hub-n-Spoke or VWAN)
     - Optional Variables
       - Deployment Region (Defaults to "eastus") - Location to deploy resources.
       - Virtual Machine Admin Username (Defaults to "sysadmin") - This is a jump box used to get onto the network.
 3. [AKS Deploy](./.github/workflows/aksdeploy.yml)
-   - Required Variables
+   - Required Variables:
       - Landing Zone Subscription ID - This is the subscription where you plan to deploy a custom AKS application.
