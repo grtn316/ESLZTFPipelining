@@ -125,7 +125,7 @@ Please proceed with pipeline deployments:
         - Variables
           - Management group prefix (defaults to "es")
           - Map Subscriptions to Management Groups (optional)
-            ```json
+            ```
                 {
                     root           = [],
                     decommissioned = [],
@@ -140,7 +140,7 @@ Please proceed with pipeline deployments:
       - **Completely Custom Management Group Structure**
         - Variables
           - Set Custom Landing Zones
-            ```json
+            ```
                 {
                     "main" = { # This is the Management Group ID and will be used as the Parent_Management_Group_Id below.
                     display_name               = "CustomerRoot",
