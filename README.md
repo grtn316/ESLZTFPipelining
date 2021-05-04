@@ -92,37 +92,201 @@ Eg. `"/providers/Microsoft.Management/managementGroups/YourMgGroup"`.
     ```
 
 ## Next steps
-You will need to create 6 secrets in your repo (Settings >  Secrets):
-- **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
-- **AZURE_CLIENT_SECRET** - This is a client secret you need to create in AAD > Application Registrations for the service principal you created above.
-- **AZURE_SUBSCRIPTION_ID** - This can be any subscription the service principal has access to (required by terraform to execute).
-- **AZURE_TENANT_ID** - Tenant ID of your Azure environment.
-- **TF_API_TOKEN** - If you are using Terraform to store state, you will need to genereate an API Token for your team.
-- **VM_ADMIN_PASSWORD** - Any complex password for provisoning of your VM.
+You will need to create 3 environments to store secrets for each environment in your repo (Settings > Environment)::
+-   Dev-Platform
+    -   Secrets:
+        - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
+        - **AZURE_CLIENT_SECRET** - This is a client secret you need to create in AAD > Application Registrations for the service principal you created above.
+        - **AZURE_SUBSCRIPTION_ID** - This should be your planned management subscription as Log Analytics and an Automation Account will be deployed here. Please make sure the service principal has access to create resources in this subscription.
+        - **AZURE_TENANT_ID** - Tenant ID of your Azure environment.
+        - **TF_API_TOKEN** - If you are using Terraform to store state, you will need to genereate an API Token for your team.
+        
+-   Dev-Network
+    -   Secrets:
+        - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
+        - **AZURE_CLIENT_SECRET** - This is a client secret you need to create in AAD > Application Registrations for the service principal you created above.
+        - **AZURE_SUBSCRIPTION_ID** - This should be your planned management subscription as Log Analytics and an Automation Account will be deployed here. Please make sure the service principal has access to create resources in this subscription.
+        - **AZURE_TENANT_ID** - Tenant ID of your Azure environment.
+        - **TF_API_TOKEN** - If you are using Terraform to store state, you will need to genereate an API Token for your team.
+        - **VM_ADMIN_PASSWORD** - Any complex password for provisoning of your VM.
+-   Dev-LandingZone-A1
+    -   Secrets:
+        - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
+        - **AZURE_CLIENT_SECRET** - This is a client secret you need to create in AAD > Application Registrations for the service principal you created above.
+        - **AZURE_SUBSCRIPTION_ID** - This should be your planned management subscription as Log Analytics and an Automation Account will be deployed here. Please make sure the service principal has access to create resources in this subscription.
+        - **AZURE_TENANT_ID** - Tenant ID of your Azure environment.
+        - **TF_API_TOKEN** - If you are using Terraform to store state, you will need to genereate an API Token for your team.
+
 
 Please proceed with pipeline deployments:
 1. [Platform Deploy](./.github/workflows/platformdeploy.yml)
-    - Optional Variables
-      - Management group prefix (defaults to "es")
-      - Map Subscriptions to Management Groups
+    - This pipeline will deploy 2 Management Group Structures:
+      - **Default ESLZ Environment**
+        - Variables
+          - Management group prefix (defaults to "es")
+          - Map Subscriptions to Management Groups (optional)
+            ```json
+                {
+                    root           = [],
+                    decommissioned = [],
+                    sandboxes      = [],
+                    landing-zones  = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                    platform       = [],
+                    connectivity   = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                    management     = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                    identity       = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
+                }
+            ```
+      - **Completely Custom Management Group Structure**
+        - Variables
+          - Set Custom Landing Zones
+            ```json
+                {
+                    "main" = { # This is the Management Group ID and will be used as the Parent_Management_Group_Id below.
+                    display_name               = "CustomerRoot",
+                    parent_management_group_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", # Must be your Azure Tenant ID.
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "main",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "usa" = {
+                    display_name               = "USA",
+                    parent_management_group_id = "main",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "usa",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "uk" = {
+                    display_name               = "UK",
+                    parent_management_group_id = "main",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "uk",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "decommissioned" = {
+                    display_name               = "Decommissioned",
+                    parent_management_group_id = "usa",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "default_empty",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "sandbox" = {
+                    display_name               = "Sandbox",
+                    parent_management_group_id = "usa",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "sandbox",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "core" = {
+                    display_name               = "Shared Services",
+                    parent_management_group_id = "usa",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "default_empty",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "management" = {
+                    display_name               = "Management",
+                    parent_management_group_id = "core",
+                    subscription_ids           = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                    archetype_config = {
+                        archetype_id   = "logging",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "iam" = {
+                    display_name               = "Identity",
+                    parent_management_group_id = "core",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "default_empty",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "networking" = {
+                    display_name               = "Connectivity",
+                    parent_management_group_id = "core",
+                    subscription_ids           = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                    archetype_config = {
+                        archetype_id   = "networking",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "prod" = {
+                    display_name               = "Production",
+                    parent_management_group_id = "usa",
+                    subscription_ids           = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
+                    archetype_config = {
+                        archetype_id   = "prod",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    },
+                    "nonprod" = {
+                    display_name               = "Development",
+                    parent_management_group_id = "usa",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "nonprod",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    }
+                }
+            ``` 
+      
+      Inspecting a Landing Zone Object:
         ```
-            {
-                root           = [],
-                decommissioned = [],
-                sandboxes      = [],
-                landing-zones  = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
-                platform       = [],
-                connectivity   = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
-                management     = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
-                identity       = ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
-            }
+            "usa" = {
+                    display_name               = "USA",
+                    parent_management_group_id = "main",
+                    subscription_ids           = [],
+                    archetype_config = {
+                        archetype_id   = "usa",
+                        parameters     = {},
+                        access_control = {}
+                        }
+                    }
         ```
+
+        - **usa** - The Management Group Id. Must be lower case with no spaces.
+          - **display_name** - Display name of the Management Group.
+          - **parent_management_group_id** - the objects parent Id. In this case, it would be "main" as usa is nested underneath main.
+          - **subscription_ids** - This is a string array of all subscriptions that should be associated with this Management Group. This can be overridden using another variable.
+          - **archetype_config**
+            - **archetype_id** - this is a reference to the /lib/archetype_definitions file that contains the "usa" definition.
+            - **parameters** - maps parameters to policy assignments
+            - **access_control** - map users to specific roles within the management group.
+  
+        More information can be found here: [Archetype Definitions](https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/wiki/%5BUser-Guide%5D-Archetype-Definitions)
+
+
 2. [Network Deploy](./.github/workflows/networkdeploy.yml)
     - Required Variables
-      - Connectivity Subscription ID
+      - Connectivity Subscription ID - This is the subscription ID where you plan to deploy the centralized networking components (Hub-n-Spoke or VWAN)
     - Optional Variables
-      - Deployment Region (Defaults to "eastus")
-      - Virtual Machine Admin Username (Defaults to "sysadmin")
+      - Deployment Region (Defaults to "eastus") - Location to deploy resources.
+      - Virtual Machine Admin Username (Defaults to "sysadmin") - This is a jump box used to get onto the network.
 3. [AKS Deploy](./.github/workflows/aksdeploy.yml)
    - Required Variables
-      - Landing Zone Subscription ID
+      - Landing Zone Subscription ID - This is the subscription where you plan to deploy a custom AKS application.

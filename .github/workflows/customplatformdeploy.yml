@@ -3,15 +3,15 @@ on:
   workflow_dispatch:
     inputs:
       root_id:
-          description: 'Set a custom Name (ID) value for the Enterprise-scale "root" Management Group'
+          description: '(Default) Set a custom Name (ID) value for the Enterprise-scale "root" Management Group'
           required: false
           default: 'es'
       subscription_id_overrides:
-          description: 'Map Subscriptions to Management Groups'
+          description: '(Default) Map Subscriptions to Management Groups'
           required: false
           default: '{}'
-      TF_VAR_root_id_3_custom_landing_zones:
-          description: 'Define Custom Landing Zone Structure'
+      TF_VAR_custom_root_id_custom_landing_zones:
+          description: '(Custom) Define Custom Landing Zone Structure'
           required: false
           default: '{}'
     branches:
@@ -26,7 +26,7 @@ jobs:
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       TF_VAR_root_id: ${{ github.event.inputs.root_id }}
       TF_VAR_subscription_id_overrides: ${{ github.event.inputs.subscription_id_overrides }}
-      TF_VAR_root_id_3_custom_landing_zones: ${{ github.event.inputs.TF_VAR_root_id_3_custom_landing_zones }}
+      TF_VAR_custom_root_id_custom_landing_zones: ${{ github.event.inputs.TF_VAR_custom_root_id_custom_landing_zones }}
     runs-on: ubuntu-18.04
     environment:
         name: Dev-Platform

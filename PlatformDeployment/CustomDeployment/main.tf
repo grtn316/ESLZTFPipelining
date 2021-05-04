@@ -8,6 +8,7 @@ data "azurerm_client_config" "current" {}
 # Declare the Terraform Module for Cloud Adoption Framework
 # Enterprise-scale and provide a base configuration.
 
+#This module deploys the default Management Group structure
 module "enterprise_scale" {
   source  = "Azure/caf-enterprise-scale/azurerm"
   version = "0.2.0"
@@ -15,11 +16,11 @@ module "enterprise_scale" {
   #Input Variables: https://registry.terraform.io/modules/Azure/caf-enterprise-scale/azurerm/latest?tab=inputs
 
   root_parent_id = var.root_parent_id == null ? data.azurerm_client_config.current.tenant_id : var.root_parent_id #REQUIRED: The root_parent_id is used to specify where to set the root for all Landing Zone deployments. Usually the Tenant ID when deploying the core Enterprise-scale Landing Zones.
-  root_id        = var.root_id   #OPTIONAL: If specified, will set a custom Name (ID) value for the Enterprise-scale "root" Management Group, and append this to the ID for all core Enterprise-scale Management Groups.
-  root_name      = var.root_name #OPTIONAL: If specified, will set a custom DisplayName value for the Enterprise-scale "root" Management Group.
+  root_id        = var.root_id                                                                                    #OPTIONAL: If specified, will set a custom Name (ID) value for the Enterprise-scale "root" Management Group, and append this to the ID for all core Enterprise-scale Management Groups.
+  root_name      = var.root_name                                                                                  #OPTIONAL: If specified, will set a custom DisplayName value for the Enterprise-scale "root" Management Group.
 
-  archetype_config_overrides = var.archetype_config_overrides == null ? {} : var.archetype_config_overrides                               # OPTIONAL: If specified, will set custom Archetype configurations to the default Enterprise-scale Management Groups.
-  create_duration_delay = var.create_duration_delay == null ? { #OPTIONAL: Used to tune terraform apply when faced with errors caused by API caching or eventual consistency. Sets a custom delay period after creation of the specified resource type.
+  archetype_config_overrides = var.archetype_config_overrides == null ? {} : var.archetype_config_overrides # OPTIONAL: If specified, will set custom Archetype configurations to the default Enterprise-scale Management Groups.
+  create_duration_delay = var.create_duration_delay == null ? {                                             #OPTIONAL: Used to tune terraform apply when faced with errors caused by API caching or eventual consistency. Sets a custom delay period after creation of the specified resource type.
     azurerm_management_group      = "30s"
     azurerm_policy_assignment     = "30s"
     azurerm_policy_definition     = "30s"
@@ -28,14 +29,12 @@ module "enterprise_scale" {
     azurerm_role_definition       = "60s"
   } : var.create_duration_delay
 
-  custom_landing_zones      = var.custom_landing_zones == null ? {} : var.custom_landing_zones           #OPTIONAL: If specified, will deploy additional Management Groups alongside Enterprise-scale core Management Groups.
+  custom_landing_zones      = var.custom_landing_zones == null ? {} : var.custom_landing_zones              #OPTIONAL: If specified, will deploy additional Management Groups alongside Enterprise-scale core Management Groups.
   default_location          = var.default_location == null ? "eastus" : var.default_location                #OPTIONAL: If specified, will use set the default location used for resource deployments where needed.
   deploy_core_landing_zones = var.deploy_core_landing_zones == null ? true : var.deploy_core_landing_zones  #OPTIONAL: If set to true, will include the core Enterprise-scale Management Group hierarchy.
   deploy_demo_landing_zones = var.deploy_demo_landing_zones == null ? false : var.deploy_demo_landing_zones #OPTIONAL: If set to true, will include the demo "Landing Zone" Management Groups.
 
-  deploy_management_resources = true
-  configure_management_resources = var.configure_management_resources
-  subscription_id_management  = "14e1bfac-695b-4d75-8f40-a3d5dd5ef2aa"
+  deploy_management_resources = false #disable and deploy in Custom module
 
   destroy_duration_delay = var.destroy_duration_delay == null ? { #OPTIONAL: Used to tune terraform deploy when faced with errors caused by API caching or eventual consistency. Sets a custom delay period after destruction of the specified resource type.
     azurerm_management_group      = "0s"
@@ -49,124 +48,48 @@ module "enterprise_scale" {
   library_path = var.library_path == null ? "" : var.library_path #OPTIONAL: If specified, sets the path to a custom library folder for archetype artefacts.
 
   subscription_id_overrides = var.subscription_id_overrides == null ? {} : var.subscription_id_overrides #OPTIONAL: If specified, will be used to assign subscription_ids to the default Enterprise-scale Management Groups.
-  template_file_variables   = var.template_file_variables == null ? {} : var.template_file_variables     #OPTIONAL: If specified, provides the ability to define custom template variables used when reading in template files from the built-in and custom library_path.
+
+  #Add subscription overrides below or include in custom_landing_zones definition
+  #   # subscription_id_overrides = {
+  #   #   root           = []
+  #   #   decommissioned = []
+  #   #   sandboxes      = []
+  #   #   landing-zones  = []
+  #   #   platform       = []
+  #   #   connectivity   = []
+  #   #   management     = []
+  #   #   identity       = []
+  #   #   demo-corp      = []
+  #   #   demo-online    = []
+  #   #   demo-sap       = []
+  #   # }
+
+
+  template_file_variables = var.template_file_variables == null ? {} : var.template_file_variables #OPTIONAL: If specified, provides the ability to define custom template variables used when reading in template files from the built-in and custom library_path.
 }
 
-module "test_root_id_3" {
+#This module deploys a compeltely custom Management Group structure
+module "custom_root_id" {
   source  = "Azure/caf-enterprise-scale/azurerm"
   version = "0.2.0"
 
   root_parent_id = data.azurerm_client_config.current.tenant_id
-  root_id        = var.root_id_3
+  root_id        = var.custom_root_id
   root_name      = "${var.root_name} Custom"
   library_path   = "${path.root}/lib"
 
+  default_location          = var.default_location == null ? "eastus" : var.default_location                #OPTIONAL: If specified, will use set the default location used for resource deployments where needed.
   deploy_core_landing_zones = false
   deploy_demo_landing_zones = false
-  
 
-#   custom_landing_zones = {
-#       "${var.root_id_3}-main" = {
-#         display_name               = "Main"
-#         parent_management_group_id = "${var.root_id_3}"
-#         subscription_ids           = []
-#         archetype_config = {
-#           archetype_id   = "default_empty"
-#           parameters     = {}
-#           access_control = {}
-#         }
-#       }
-# }
-
-  custom_landing_zones = var.root_id_3_custom_landing_zones
-
-#   # archetype_config_overrides = {
-#   #   root = {
-#   #     archetype_id = "customer_root"
-#   #     parameters = {
-#   #       Deploy-SQL-Auditing = {
-#   #         retentionDays                = jsonencode("10")
-#   #         storageAccountsResourceGroup = jsonencode("")
-#   #       }
-#   #       Deploy-HITRUST-HIPAA = {
-#   #         CertificateThumbprints                                        = jsonencode("")
-#   #         DeployDiagnosticSettingsforNetworkSecurityGroupsrgName        = jsonencode("true")
-#   #         DeployDiagnosticSettingsforNetworkSecurityGroupsstoragePrefix = jsonencode(var.root_id_3)
-#   #         installedApplicationsOnWindowsVM                              = jsonencode("")
-#   #       }
-#   #     }
-#   #     access_control = {}
-#   #   }
-#   # }
-
-#   # subscription_id_overrides = {
-#   #   root           = []
-#   #   decommissioned = []
-#   #   sandboxes      = []
-#   #   landing-zones  = []
-#   #   platform       = []
-#   #   connectivity   = []
-#   #   management     = []
-#   #   identity       = []
-#   #   demo-corp      = []
-#   #   demo-online    = []
-#   #   demo-sap       = []
-#   # }
+  #Subscription id context for TF Apply command must be match the subscription_id_management
+  deploy_management_resources    = true
+  configure_management_resources = var.configure_management_resources
+  subscription_id_management     = data.azurerm_client_config.current.subscription_id
 
 
- }
-
-# module "test_root" {
-#   source  = "Azure/caf-enterprise-scale/azurerm"
-#   version = "0.1.2"
-
-#   root_parent_id = data.azurerm_client_config.current.tenant_id
-#   root_id        = "customes"
-#   root_name      = "Custom Test"
-  
-#   deploy_core_landing_zones = false
-#   deploy_demo_landing_zones = false
-
-# }
+  #Defines the management group structure, policy and subscription relationships
+  custom_landing_zones = var.custom_root_id_custom_landing_zones
 
 
-# module "test_root_id_3_lz1" {
-#   source  = "Azure/caf-enterprise-scale/azurerm"
-#   version = "0.1.2"
-
-#   root_parent_id            = "${var.root_id_3}-landing-zones"
-#   root_id                   = var.root_id_3
-#   deploy_core_landing_zones = false
-#   library_path              = "${path.root}/lib"
-
-#   custom_landing_zones = {
-#     "${var.root_id_3}-scoped-lz1" = {
-#       display_name               = "Scoped LZ1"
-#       parent_management_group_id = "${var.root_id_3}-landing-zones"
-#       subscription_ids           = []
-#       archetype_config = {
-#         archetype_id = "customer_online"
-#         parameters = {
-#           Deny-Resource-Locations = {
-#             listOfAllowedLocations = jsonencode([
-#               "northcentralus",
-#               "southcentralus",
-#             ])
-#           }
-#           Deny-RSG-Locations = {
-#             listOfAllowedLocations = jsonencode([
-#               "northcentralus",
-#               "southcentralus",
-#             ])
-#           }
-#         }
-#         access_control = {}
-#       }
-#     }
-#   }
-
-#   depends_on = [
-#     module.test_root_id_3,
-#   ]
-
-# }
+}
