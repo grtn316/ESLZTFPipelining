@@ -100,7 +100,7 @@ Eg. `"/providers/Microsoft.Management/managementGroups/YourMgGroup"`.
     ```
 
 ## Next steps
-You will need to fork this repo and create 3 environments to store secrets for each environment in your repo (Settings > Environment):
+You will need to fork this repo into your own github repo and create 3 environments to store secrets for each deployment in your repo (Settings > Environment):
 -   Dev-Platform
     -   Secrets:
         - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
@@ -127,6 +127,9 @@ You will need to fork this repo and create 3 environments to store secrets for e
 
 
 Please proceed with pipeline deployments:
+- **Note**: You can only associate your subscriptions to a single ESLZ Management Group. You can move these between the default and custom ESLZ by rerunning the pipeline and modifying your input parameters.
+  
+
 1. [Platform Deploy](./.github/workflows/platformdeploy.yml)
     - This pipeline will deploy 2 Management Group Structures:
       - **Default ESLZ Environment**
