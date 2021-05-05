@@ -1,0 +1,39 @@
+name: Landing Zone Network Deploy To Azure
+on:
+  workflow_dispatch:
+    inputs:
+      subscription_id:
+          description: 'Landing Zone Subscription Id'
+          required: true
+          default: ''
+jobs:
+  deploy-to-azure:
+    name: 'Landing Zone Network Deploy to Azure'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ github.event.inputs.subscription_id }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    runs-on: ubuntu-18.04
+    environment:
+        name: Dev-Network
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@main
+
+      - name: 'Set Terraform'
+        uses: hashicorp/setup-terraform@v1.2.1
+        with:
+          terraform_version: 0.14.8
+          terraform_wrapper: true
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: 'Terraform Init'
+        id: init
+        working-directory: ./LZDeployment
+        run: terraform init
+
+      - name: 'Terraform Apply'
+        id: apply
+        working-directory: ./LZDeployment
+        run: terraform apply -input=false -auto-approve

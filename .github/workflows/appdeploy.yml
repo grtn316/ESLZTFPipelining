@@ -1,0 +1,41 @@
+name: Deploy to AKS Cluster
+on:
+  workflow_dispatch:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+        name: VotingApp
+    steps:
+    - uses: actions/checkout@master
+    
+     
+    # Set the target AKS cluster.
+    - name: Get AKS Credentials
+      uses: Azure/aks-set-context@v1
+      with:
+        creds: ${{ secrets.LZA1_CREDENTIALS }}
+        resource-group: 94654-aks-rg
+        cluster-name: aks-94654-k8s
+        
+    - uses: Azure/k8s-create-secret@v1
+      with:
+        container-registry-url: acr94654.azurecr.io
+        container-registry-username: ${{ secrets.ACR_USERNAME }}
+        container-registry-password: ${{ secrets.ACR_PASSWORD }}
+        secret-name: k8s-secret
+
+    - uses: Azure/k8s-deploy@v1
+      with:
+        manifests: |
+          ./K8Sdeployments/VotingApp/azure-vote-all-in-one-redis.yaml
+#
+        images: |
+          acr94654.azurecr.io/azure-vote-front:v1
+          mcr.microsoft.com/oss/bitnami/redis:6.0.8
+
+        imagepullsecrets: |
+          k8s-secret

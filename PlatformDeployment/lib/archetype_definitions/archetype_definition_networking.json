@@ -1,0 +1,22 @@
+{
+    "networking": {
+        "policy_assignments": [
+            "Deploy-DNSZGrp-Blob-PE",
+            "Deploy-DNSZGrp-File-PE",
+            "Deploy-DNSZGrp-KV-PE",
+            "Deploy-DNSZGrp-Queue-PE",
+            "Deploy-DNSZGrp-Sql-PE",
+            "Deploy-DNSZGrp-Table-PE",
+            "Deploy-FirewallPolicy"
+        ],
+        "policy_definitions": [
+            
+        ],
+        "policy_set_definitions": [],
+        "role_definitions": [],
+        "archetype_config": {
+            "parameters": {},
+            "access_control": {}
+        }
+    }
+}

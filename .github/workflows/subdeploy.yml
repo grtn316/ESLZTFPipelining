@@ -1,0 +1,44 @@
+name: Subscription Deploy To Azure
+on:
+  workflow_dispatch:
+    inputs:
+      billing_account_name:
+          description: 'Billiing Account Name (8 Digit)'
+          required: true
+          default: '00000000'
+      enrollment_account_name:
+          description: 'Enrollment Account name'
+          required: true
+          default: 'ABC'
+jobs:
+  deploy-to-azure:
+    name: 'Sub Deploy to Azure'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      TF_VAR_billing_account_name: ${{ github.event.inputs.billing_account_name }}
+      TF_VAR_enrollment_account_name: ${{ github.event.inputs.enrollment_account_name }}
+    runs-on: ubuntu-18.04
+    environment:
+      name: Dev-SubscriptionCreation
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@main
+
+      - name: 'Set Terraform'
+        uses: hashicorp/setup-terraform@v1.2.1
+        with:
+          terraform_version: 0.14.8
+          terraform_wrapper: true
+
+      - name: 'Terraform Init'
+        id: init
+        working-directory: ./SubDeployment
+        run: terraform init
+
+      - name: 'Terraform Apply'
+        id: apply
+        working-directory: ./SubDeployment
+        run: terraform apply -input=false -auto-approve
