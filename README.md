@@ -19,6 +19,14 @@ In this sample, we have several pipelines deploying the following:
    - Virtual Network (with peering to connectivity VNet)
    - Network Security Group
 
+# Prerequisites
+
+1. An Azure Tenant with Global Admin privileges.
+2. At least 3 subscription to complete the full demo.
+3. Terraform Cloud to store central pipeline state. **Optionally**: [Store Terraform state in Azure Storage](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
+4. Github Actions or equivalent tool for automated deployments.
+5. Code Editor like [VSCode](https://code.visualstudio.com/)
+
 # Getting Started
 
 For the intial deployment of ESLZ, you will need to create a service principal and grant it access to the root management group scope. *We strongly recommend developing a process to allow temporary access for your deployments and not leave accounts with standing access at the root level.*
@@ -92,7 +100,7 @@ Eg. `"/providers/Microsoft.Management/managementGroups/YourMgGroup"`.
     ```
 
 ## Next steps
-You will need to create 3 environments to store secrets for each environment in your repo (Settings > Environment)::
+You will need to fork this repo and create 3 environments to store secrets for each environment in your repo (Settings > Environment):
 -   Dev-Platform
     -   Secrets:
         - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
@@ -105,7 +113,7 @@ You will need to create 3 environments to store secrets for each environment in 
     -   Secrets:
         - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
         - **AZURE_CLIENT_SECRET** - This is a client secret you need to create in AAD > Application Registrations for the service principal you created above.
-        - **AZURE_SUBSCRIPTION_ID** - This should be your planned management subscription as Log Analytics and an Automation Account will be deployed here. Please make sure the service principal has access to create resources in this subscription.
+        - **AZURE_SUBSCRIPTION_ID** - This should be your planned connectivity subscription where you plan to deploy centralized networking components. Please make sure the service principal has access to create resources in this subscription.
         - **AZURE_TENANT_ID** - Tenant ID of your Azure environment.
         - **TF_API_TOKEN** - If you are using Terraform to store state, you will need to genereate an API Token for your team.
         - **VM_ADMIN_PASSWORD** - Any complex password for provisoning of your VM.
@@ -113,7 +121,7 @@ You will need to create 3 environments to store secrets for each environment in 
     -   Secrets:
         - **AZURE_CLIENT_ID** - This is the client ID of the service principal you created above.
         - **AZURE_CLIENT_SECRET** - This is a client secret you need to create in AAD > Application Registrations for the service principal you created above.
-        - **AZURE_SUBSCRIPTION_ID** - This should be your planned management subscription as Log Analytics and an Automation Account will be deployed here. Please make sure the service principal has access to create resources in this subscription.
+        - **AZURE_SUBSCRIPTION_ID** - This should be a landing zone subscription where you plan to deploy an application or solution. Please make sure the service principal has access to create resources in this subscription.
         - **AZURE_TENANT_ID** - Tenant ID of your Azure environment.
         - **TF_API_TOKEN** - If you are using Terraform to store state, you will need to genereate an API Token for your team.
 
@@ -283,7 +291,7 @@ Please proceed with pipeline deployments:
 
 2. [Network Deploy](./.github/workflows/networkdeploy.yml)
     - Required Variables:
-      - Connectivity Subscription ID - This is the subscription ID where you plan to deploy the centralized networking components (Hub-n-Spoke or VWAN)
+      - Connectivity Subscription ID - This is the subscription ID where you plan to deploy the centralized networking components (Hub-n-Spoke or Virtual WAN)
     - Optional Variables
       - Deployment Region (Defaults to "eastus") - Location to deploy resources.
       - Virtual Machine Admin Username (Defaults to "sysadmin") - This is a jump box used to get onto the network.
