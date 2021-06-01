@@ -37,7 +37,9 @@
         "policy_definitions": [
         ],
         "policy_set_definitions": [],
-        "role_definitions": [],
+        "role_definitions": [
+            "Network-Subnet-Contributor"
+        ],
         "archetype_config": {
             "parameters": {},
             "access_control": {}
