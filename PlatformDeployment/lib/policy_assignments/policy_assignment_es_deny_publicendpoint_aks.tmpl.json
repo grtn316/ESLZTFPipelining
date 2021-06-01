@@ -6,11 +6,7 @@
     "description": "Deny creation of public endpoint for AKS",
     "displayName": "Deny-PublicEndpoint-Aks",
     "notScopes": [],
-    "parameters": {
-      "effect": {
-        "value": "Disabled"
-      }
-    },
+    "parameters": {},
     "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicEndpoint-Aks",
     "scope": "${current_scope_resource_id}"
   },
