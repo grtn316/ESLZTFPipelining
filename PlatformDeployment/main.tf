@@ -35,8 +35,7 @@ module "enterprise_scale" {
   deploy_demo_landing_zones = var.deploy_demo_landing_zones == null ? false : var.deploy_demo_landing_zones #OPTIONAL: If set to true, will include the demo "Landing Zone" Management Groups.
 
   deploy_management_resources = false #disable and deploy in Custom module for demo
-  configure_management_resources = null
-  subscription_id_management     = null
+
 
   destroy_duration_delay = var.destroy_duration_delay == null ? { #OPTIONAL: Used to tune terraform deploy when faced with errors caused by API caching or eventual consistency. Sets a custom delay period after destruction of the specified resource type.
     azurerm_management_group      = "0s"
