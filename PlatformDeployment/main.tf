@@ -69,7 +69,7 @@ module "enterprise_scale" {
   template_file_variables = var.template_file_variables == null ? {} : var.template_file_variables #OPTIONAL: If specified, provides the ability to define custom template variables used when reading in template files from the built-in and custom library_path.
 }
 
-#This module deploys a compeltely custom Management Group structure
+#This module deploys a custom Management Group structure
 module "custom_root_id" {
   source  = "Azure/caf-enterprise-scale/azurerm"
   version = "0.3.0"
@@ -83,9 +83,9 @@ module "custom_root_id" {
   deploy_core_landing_zones = false
   deploy_demo_landing_zones = false
 
-  #Subscription id context for TF Apply command must be match the subscription_id_management
   deploy_management_resources    = true
   configure_management_resources = var.configure_management_resources
+  #Subscription id context for TF Apply command must be match the subscription_id_management
   subscription_id_management     = data.azurerm_client_config.current.subscription_id
 
 
