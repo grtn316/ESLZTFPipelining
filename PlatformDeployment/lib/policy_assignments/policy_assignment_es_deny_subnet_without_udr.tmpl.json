@@ -5,7 +5,7 @@
   "properties": {
     "description": "Deny provisioning of subnet without UDR attached.",
     "displayName": "Deny-Subnet-Without-Udr",
-    "notScopes": ["/providers/Microsoft.Management/managementGroups/networking"],
+    "notScopes": ["/providers/Microsoft.Management/managementGroups/networking", "/subscriptions/0fd3a867-7211-409f-9678-9b812ed9aa47", "/subscriptions/395e930a-058a-418a-89d9-5a7434ec9de8/resourceGroups/RUNNER-RG/providers/Microsoft.Compute/virtualMachines/runner"],
     "parameters": {},
     "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Udr",
     "scope": "${current_scope_resource_id}"
